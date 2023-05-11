@@ -5,10 +5,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
     <title>게시글 상세 페이지</title>
     <script src="api.js"></script>
-    <!--1,2-->
     <script src="posting_detail.js"></script>
+
     <style>
         * {
             margin: 0;
@@ -33,28 +44,28 @@
 
         #aside-left {
             float: left;
-            width: 25%;
+            width: 30%;
 
             margin: 10px;
 
-            background-color: blue;
+            /* background-color: blue; */
 
         }
 
         #aside-right {
             float: right;
-            width: 25%;
+            width: 10%;
 
             margin: 10px;
 
-            background-color: blue;
+            /* background-color: blue; */
 
 
         }
 
         #section {
             float: right;
-            width: 50%;
+            width: 60%;
             text-align: center;
 
             margin-top: 10px;
@@ -79,11 +90,16 @@
             /* margin: 10px;
             padding: 10px; */
 
-            background-color: aqua;
+            /* background-color: aqua; */
         }
 
         #footer {
             background-color: gray;
+        }
+
+
+        .col {
+            margin-bottom: 10px;
         }
     </style>
 </head>
@@ -93,161 +109,83 @@
         <h1>IT'em is-헤더로 변경 예정</h1>
     </div>
     <div id="wrap">
+        <!-- 댓글 -->
         <div id="aside-left">
             <!-- 댓글리스트 postings_id/comments_set.all() start -->
             <div style="overflow:auto; height: 80%;">
                 <h1>댓글</h1>
-                <div id="comment-list">
-                    <form
-                        style="margin: 10px; padding: 10px; height: 100px; border-radius: 3px; background-color: aliceblue;">
-                        <h5>작성한 댓글 리스트</h5>
-                        <li>5</li>
-                        <h6 style="float: right;">작성한 댓글 시간</h6>
-                        <!--type이 submit이면 get방식의 form태그로 받아져서 쿼리문(?email=&password=)으로 돌아감 -->
-                    </form>
-                </div>
-                <div>
-                    <form
-                        style="margin: 10px; padding: 10px; height: 100px; border-radius: 3px; background-color: aliceblue;">
-                        <h5>작성한 댓글 리스트</h5>
-                        <li>5</li>
-                        <h6 style="float: right;">작성한 댓글 시간</h6>
-                        <!--type이 submit이면 get방식의 form태그로 받아져서 쿼리문(?email=&password=)으로 돌아감 -->
-                    </form>
-                </div>
-                <div>
-                    <form
-                        style="margin: 10px; padding: 10px; height: 100px; border-radius: 3px; background-color: aliceblue;">
-                        <h5>작성한 댓글 리스트</h5>
-                        <li>5</li>
-                        <h6 style="float: right;">작성한 댓글 시간</h6>
-                        <!--type이 submit이면 get방식의 form태그로 받아져서 쿼리문(?email=&password=)으로 돌아감 -->
-                    </form>
-                </div>
-                <div>
-                    <form
-                        style="margin: 10px; padding: 10px; height: 100px; border-radius: 3px; background-color: aliceblue;">
-                        <h5>작성한 댓글 리스트</h5>
-                        <li>5</li>
-                        <h6 style="float: right;">작성한 댓글 시간</h6>
-                        <!--type이 submit이면 get방식의 form태그로 받아져서 쿼리문(?email=&password=)으로 돌아감 -->
-                    </form>
-                </div>
-                <div>
-                    <form
-                        style="margin: 10px; padding: 10px; height: 100px; border-radius: 3px; background-color: aliceblue;">
-                        <h5>작성한 댓글 리스트</h5>
-                        <li>5</li>
-                        <h6 style="float: right;">작성한 댓글 시간</h6>
-                        <!--type이 submit이면 get방식의 form태그로 받아져서 쿼리문(?email=&password=)으로 돌아감 -->
-                    </form>
-                </div>
-                <div>
-                    <form
-                        style="margin: 10px; padding: 10px; height: 100px; border-radius: 3px; background-color: aliceblue;">
-                        <h5>작성한 댓글 리스트</h5>
-                        <li>5</li>
-                        <h6 style="float: right;">작성한 댓글 시간</h6>
-                        <!--type이 submit이면 get방식의 form태그로 받아져서 쿼리문(?email=&password=)으로 돌아감 -->
-                    </form>
-                </div>
-                <div>
-                    <form
-                        style="margin: 10px; padding: 10px; height: 100px; border-radius: 3px; background-color: aliceblue;">
-                        <h5>작성한 댓글 리스트</h5>
-                        <li>5</li>
-                        <h6 style="float: right;">작성한 댓글 시간</h6>
-                        <!--type이 submit이면 get방식의 form태그로 받아져서 쿼리문(?email=&password=)으로 돌아감 -->
-                    </form>
-                </div>
-                <div>
-                    <form
-                        style="margin: 10px; padding: 10px; height: 100px; border-radius: 3px; background-color: aliceblue;">
-                        <h5>작성한 댓글 리스트</h5>
-                        <li>5</li>
-                        <h6 style="float: right;">작성한 댓글 시간</h6>
-                        <!--type이 submit이면 get방식의 form태그로 받아져서 쿼리문(?email=&password=)으로 돌아감 -->
-                    </form>
-                </div>
-                <div>
-                    <form
-                        style="margin: 10px; padding: 10px; height: 100px; border-radius: 3px; background-color: aliceblue;">
-                        <h5>작성한 댓글 리스트</h5>
-                        <li>5</li>
-                        <h6 style="float: right;">작성한 댓글 시간</h6>
-                        <!--type이 submit이면 get방식의 form태그로 받아져서 쿼리문(?email=&password=)으로 돌아감 -->
-                    </form>
-                </div>
-                <div>
-                    <form
-                        style="margin: 10px; padding: 10px; height: 100px; border-radius: 3px; background-color: aliceblue;">
-                        <h5>작성한 댓글 리스트</h5>
-                        <li>5</li>
-                        <h6 style="float: right;">작성한 댓글 시간</h6>
-                        <!--type이 submit이면 get방식의 form태그로 받아져서 쿼리문(?email=&password=)으로 돌아감 -->
-                    </form>
-                </div>
-                <div>
-                    <form
-                        style="margin: 10px; padding: 10px; height: 100px; border-radius: 3px; background-color: aliceblue;">
-                        <h5>작성한 댓글 리스트</h5>
-                        <li>5</li>
-                        <h6 style="float: right;">작성한 댓글 시간</h6>
-                        <!--type이 submit이면 get방식의 form태그로 받아져서 쿼리문(?email=&password=)으로 돌아감 -->
-                    </form>
-                </div>
-                <div>
-                    <form style="padding: 10px; height: 50px; background-color: aliceblue;">
-                        <h5>작성한 댓글 리스트</h5>
-                        <!--type이 submit이면 get방식의 form태그로 받아져서 쿼리문(?email=&password=)으로 돌아감 -->
-                    </form>
+                <div class="col" id="comment-list">
+                    <div class="card border-dark mb-3" style="max-width: 100%; margin: 5px;">
+
+                    </div>
                 </div>
             </div>
             <!-- 댓글리스트 postings_id/comments_set.all() end -->
-            <div
-                style="margin-top: 20px; padding-top: 5px; height: 15%; justify-content: center; background-color: chocolate;">
-                <form style="padding: 5px; justify-content: center; background-color: #48BAE4;">
-                    <input style="height: 100px;" type="comment" name="comment" id="comment" placeholder="댓글을작성해주세요">
-                    <button type="button" class="btn btn-primary" onclick="handleCommentPost()">제출</button>
-                    <!--type이 submit이면 get방식의 form태그로 받아져서 쿼리문(?email=&password=)으로 돌아감 -->
-                </form>
+            <div style="margin-top: 10px; height: 20%; justify-content: center; background-color: chocolate;">
+
+                <div class="col_">
+                    <div class="col-7">
+                        <input type="text" class="000" id="new-comment" placeholder="댓글을작성해주세요" />
+                    </div>
+                </div>
+                <div class="col_">
+                    <button type="button" class="btn btn-primary btn-sm" onclick="submitComment()">제출</button>
+                </div>
+                <!--type이 submit이면 get방식의 form태그로 받아져서 쿼리문(?email=&password=)으로 돌아감 -->
+
             </div>
         </div>
+        <!-- 댓글 -->
+
+        <!-- 게시글 -->
         <div id="section">
             <h1 id="article-title">게시글</h1>
             <div id="article" style="height: 10%; background-color: yellow;">
                 <div id="posting-title"></div>
-                <span>게시글 작성자</span>
+                <div id="posting-user"></div>
             </div>
             <div id="article" style="height: 300px; background-color: blueviolet;">
-                <div id="article-image"
+                <div id="posting-image"
                     style="width: 50%; height: 100%; padding:10px; float: left; display: flex; justify-content: center; background-color: green;">
-                    게시글 사진
+
                     <!-- <img src="https://t1.daumcdn.net/cfile/tistory/24283C3858F778CA2E" alt="My Image"> -->
                 </div>
-                <div id="article-content"
+                <div id="posting-content"
                     style="width: 50%; height: 100%; padding:10px; float: right; background-color:chartreuse">
-                    <span>게시글 내용</span>
+                    <!-- <span>게시글 내용</span> -->
                 </div>
             </div>
             <div id="article" style="height: 50px; background-color: white;">
-                <div style="float: right;">
-                    <button type="put" style="background-color: aqua; border-radius: 5px;">수정</button>
-                    <button type="delete" style="background-color: red; border-radius: 5px;">삭제</button>
+                <div style="float: right; margin-top: 5px;">
+                    <a href="https://www.naver.com/"><button type="put" class="btn btn-info btn-sm">수정</button></a>
+                    <button type="delete" class="btn btn-danger btn-sm">삭제</button>
                 </div>
             </div>
-            <div id="article" style="height: 100px; background-color: blueviolet;">
-                <div style="float: right;">
-                    <span>좋아요 아이콘</span>
-                    <span>좋아요 개수</span>
+            <div id="article" style="height: 100px; ">
+                <div style="float: right; margin-right: 70px;">
+                    <a href="0000" onclick="좋아요버튼"></a><i class="fa-solid fa-thumbs-up"></i>
+                    <span id="like-count"></span>
                 </div>
             </div>
         </div>
+        <!-- 게시글 -->
+
+
         <div id="aside-right">
             <h1>팔로우</h1>
-            <div style="height: 300px; background-color: aliceblue;">
-                <h3>팔로우 신청 아이콘</h3>
-                <h4>게시물 작성자 이름 or 닉네임</h4>
+            <div class="row" style="height: 300px;">
+                <div>
+                    <!-- if 팔로우하기-->
+                    <a href="000" onclick="팔로우"></a><i class="fa-solid fa-user"></i>
+                    <span>
+                        <div id="follow-user"></div>
+                    </span>
+                    <!-- if 팔로우취소-->
+                    <a href="000" onclick="팔로우"></a><i class="fa-solid fa-user"></i>
+                    <span>
+                        <div id="follow-user"></div>
+                    </span>
+                </div>
             </div>
             <div style="height: 300px; background-color: black;"></div>
         </div>
@@ -255,6 +193,7 @@
     <div id="footer">
         <h3>푸터</h3>
     </div>
+
 
 
 
