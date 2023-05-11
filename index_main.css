@@ -12,16 +12,16 @@
   flex: 1;
   flex-direction: column;
   text-align: center;
-  border-right: 10px solid white;
   border-radius: 40px;
+  height: auto;
 }
 .box-center_nmh {
   background: orange;
   flex: 1;
   flex-direction: column;
   text-align: center;
-  border-right: 10px solid white;
   border-radius: 40px;
+  height: auto;
 }
 .box-right_nmh {
   background: yellow;
@@ -29,35 +29,12 @@
   flex-direction: column;
   text-align: center;
   border-radius: 40px;
+  height: auto;
 }
 
 #utd_nmh {
   font-size: 15px;
 }
-
-.uhb-list_nmh {
-  display: flex;
-  flex-direction: column;
-  border: 1px solid black;
-  margin-top: 20px;
-  margin-left: 30px;
-  margin-right: 30px;
-  object-fit: cover;
-  border-radius: 10px;
-  text-align: left;
-  font-size: 30px;
-}
-
-.uhb-img_nmh {
-  max-width: 50px;
-  min-height: 50px;
-  width: auto;
-  height: auto;
-  object-fit: cover;
-  border: 3px groove #ea9e9e;
-  margin: 5px 0px auto 3px;
-}
-
 
 
 #hot_nmh {
@@ -70,17 +47,12 @@
 }
 
 .card-img-top {
-  height: 4rem;
+  height: 3rem;
   width: px;
   object-fit: cover;
 }
 
 .row {
   width: auto;
-}
-
-
-
-.col {
-  flex-direction: column !important
+  margin: 20px
 }
