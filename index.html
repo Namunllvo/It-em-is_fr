@@ -1,0 +1,166 @@
+<!-- 상세페이지 -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+
+    <title>메인 게시글 리스트 페이지</title>
+    <!-- <script src="api.js"></script>  -->
+    <script src="api.js"></script>
+    <!--1,2-->
+    <script src="index.js"></script>
+    <!-- JavaScript Bundle with Popper -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        #header {
+            display: flex;
+            text-align: center;
+            /* background-color: gold; */
+        }
+
+        .wrap {
+            width: 100%;
+            height: 800px;
+            display: flex;
+            flex-direction: row;
+            align-items: stretch;
+
+            /* background-color: gold; */
+        }
+
+        #aside-left {
+            float: left;
+            width: 10%;
+
+            margin: 10px;
+
+            background-color: gray;
+
+        }
+
+        #aside-right {
+            float: right;
+            width: 10%;
+
+            margin: 10px;
+
+            /* background-color: blue; */
+
+
+        }
+
+        .section {
+            width: 80%;
+
+            margin-top: 10px;
+            margin-bottom: 10px;
+
+            /* background-color: red; */
+        }
+
+        #article {
+            width: auto;
+            height: 400px;
+            /* margin: 10px;
+            padding: 10px; */
+
+            /* background-color: aqua; */
+        }
+
+        #footer {
+            /* background-color: gray; */
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header">
+        <h1 style="text-align:center">IT'em is-헤더로 변경 예정</h1>
+    </div>
+    <div id="navbar" style="text-align: center;">
+        <!-- 링크? 정렬? 뭐지? -->
+        <div>
+            <span style="margin-right: 10px;"><A href="URL" target="캠핑"> 최신순 </A></span>
+            <span style="margin-right: 10px;"><A href="URL" target="핫이슈"> 핫이슈 </A></span>
+            <span style="margin-right: 10px;"><A href="URL" target="베스트"> 베스트 </A></span>
+        </div>
+
+    </div>
+    <!-- <div id="wrap"> -->
+    <div class="wrap">
+        <!-- 사이드바 - 카테고리 start -->
+        <div id="aside-left">
+            <h2>카테고리</h2>
+            <div style="margin: 10px 0px 10px 0px;">
+                <li>
+                    <A href="URL" target="캠핑"> 캠핑 </A>
+                </li>
+                <li>
+                    <A href="URL" target="가전"> 가전 </A>
+                </li>
+                <li>
+                    <A href="URL" target="취미"> 취미 </A>
+                </li>
+                <li>
+                    <A href="URL" target="요리"> 요리 </A>
+                </li>
+                <li>
+                    <A href="URL" target="운동"> 운동 </A>
+                </li>
+                <li>
+                    <A href="URL" target="IT"> IT </A>
+                </li>
+                <li>
+                    <A href="URL" target="데코"> 데코 </A>
+                </li>
+                <li>
+                    <A href="URL" target="패션"> 패션 </A>
+                </li>
+            </div>
+        </div>
+        <!-- 사이드바 - 카테고리 end-->
+        <!-- 게시글 카드 - 부트스트랩 start-->
+        <div class="section">
+            <h1>게시글</h1>
+            <div class="row row-cols-1 row-cols-md-4 g-4" id="posting-list">
+
+            </div>
+        </div>
+        <!-- 게시글 카드 - 부트스트랩 end-->
+        <!-- 게시글 생성하기 버튼 start -->
+        <div id="aside-right">
+            <a href="URL - 게시글 작성하기 연결" target="_blank">
+                <button type="button" class="btn btn-info btn-sm" style="color: white;">게시글 생성하기</button>
+            </a>
+        </div>
+        <!-- 게시글 생성하기 버튼 end -->
+    </div>
+    <!-- </div> wrap end -->
+    <!-- 페이지네이션 -->
+    <div id="article_pagenation" style="text-align: center;">
+        <div>
+            <h2>페이지네이션</h2>
+        </div>
+    </div>
+
+    <div id="footer">
+        <h1>푸터</h1>
+    </div>
+    <!-- <script src="api.js"></script> -->
+</body>
+
+</html>
