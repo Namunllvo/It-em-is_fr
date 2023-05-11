@@ -1,0 +1,88 @@
+:root{
+    --headerfooter-color: white;
+    --border-color: gray;
+}
+
+
+    body {
+        margin-top: 120px;
+        margin-bottom: 120px;
+        background-color: black;
+    }
+
+    header{
+        border: 4px solid var(--border-color);
+        position: fixed;
+        left: 0;
+        top:0;
+        width: 100%;
+        height: 100px;
+        background-color: var(--headerfooter-color);
+        z-index: 4;
+        display: grid;
+        grid-template-columns: 1fr 8fr 1.5fr;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+    
+    
+    .logo_myo{
+        display: inline-block;
+    }
+    
+    .logo_myo>img{
+        height: 80px;
+    }
+
+    .nav-space_myo{
+        display: inline-block;
+    }
+
+    .profile-img_myo{
+        display: inline-block;
+        height: 80px;
+        width: 80px;
+        border-radius: 50%;
+        border: 2px solid;
+        margin: 5px 0 5px 0;
+    }
+    
+    .user-box_myo{
+        display: inline-block;
+        height: 100px;
+        justify-items: center;
+    }
+    
+    .user-box_myo>div{
+        display: inline-block;
+        text-align: left;
+    }
+    
+    .user-box_myo>div>ul{
+        margin-top: 5px;
+        margin-bottom: 0;
+        padding-left: 10px;
+    }
+
+    footer{
+        border: 4px solid var(--border-color);
+        position: fixed;
+        left: 0;
+        bottom:0;
+        width: 100%;
+        height: 100px;
+        background-color: var(--headerfooter-color);
+        align-items: center;
+        justify-content: space-around;
+        text-align: center;
+    }
+    footer>div>ul{
+        display: inline-block;
+    }
+
+    .bottom_myo{
+        background-color: gray;
+        margin: 15px;
+        height: 70%;
+    }

@@ -1,0 +1,25 @@
+.body_myo{
+    background-color: orange;
+    display: block;
+    margin: auto;
+    height: 80vw;
+    width: 100%;
+}
+
+.side_myo{
+    background-color: aqua;
+    display: inline-block;
+}
+.container_myo{
+    display: inline-block;
+    background-color: blue;
+}
+.navbar_myo{
+    background-color: salmon;
+}
+.show-box_myo{
+    background-color: saddlebrown;
+}
+.page_myo{
+    background-color: green;
+}

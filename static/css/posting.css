@@ -1,0 +1,93 @@
+:root {
+  --bs-gutter-x: 100px;
+}
+
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+}
+
+input[type="file"] {
+  border: none;
+}
+
+button[type="submit"] {
+  margin-top: 20px;
+}
+.form-control {
+  word-break: break-all;
+  /*같은 단어나열도 줄넘어가기*/
+  white-space: pre-line;
+  /*엔터 인식 + 줄 넘어가기*/
+}
+
+/* new_post.html */
+.container-newpost {
+  max-width: 800px;
+  padding-right: var(--bs-gutter-x, 0.75rem);
+  padding-left: var(--bs-gutter-x, 0.75rem);
+  display: flex;
+  flex-direction: inherit;
+  margin: auto;
+}
+
+.new_update_img {
+  display: block;
+  justify-content: center;
+}
+.new_update_img > img {
+  width: 150px;
+  margin: 50px 20px;
+}
+
+.post-form {
+  margin-top: 40px;
+  padding: 20px;
+  background: none;
+  border-color: #848484;
+  color: #6e6e6e;
+  border: double;
+  border-radius: 20px;
+  width: 800px;
+}
+
+/*클래스 겹치지 않기 위해 수정 */
+
+.new_post_form-group {
+  margin-bottom: 20px;
+}
+
+/*태그만 들어가있어서 클래스 안의 태그라고 명시 */
+
+.new_post_form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.buttons_myo {
+  text-align: right;
+}
+
+.post_btn {
+  display: inline-block;
+  width: 50px;
+  background-color: #ffff;
+  color: #585858;
+  border: double;
+  border-radius: 20px;
+}
+
+.post_btn:hover {
+  background-color: #848484;
+  color: #ffff;
+  border: double;
+  border-radius: 20px;
+}
+
+.tag_myo{
+    
+}

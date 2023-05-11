@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시글 작성</title>
+</head>
+<link rel="stylesheet" href="/static/css/posting.css">
+
+<script src="/static/js/posting.js"></script>
+
+<header></header>
+<body>
+    <div class="container-newpost">
+        <div class="new_update_img">
+            <img src="/static/img/이건사야해.jpg">
+        </div>
+        <form class="post-form">
+            <div class="new_post_form-group">
+                <label for="post_title">제목</label>
+                <input type="text" class="form-control" id="post_title" name="post_title" maxlength="20"
+                    placeholder="제목을 입력해주세요!">
+            </div>
+            <div class="new_post_form-group">
+                <div id="image_container"></div>
+                <label for="post_img">사진</label>
+                <input type="file" class="form-control-file file-btn" id="post_img" name="post_img"
+                    onchange="setThumbnail(event);">
+            </div>
+            <div class="tag_myo">
+                <label for="lang">태그</label>
+                <select name="tag" id="lang">
+                    <option value="캠핑">캠핑</option>
+                    <option value="가전">가전</option>
+                    <option value="취미">취미</option>
+                    <option value="요리">요리</option>
+                    <option value="운동">운동</option>
+                    <option value="IT">IT</option>
+                    <option value="데코">데코</option>
+                    <option value="패션">패션</option>
+                </select>
+            </div>
+            <div class="new_post_form-group">
+                <label for="post_content">내용</label>
+                <textarea class="form-control" id="post_content" name="post_content" rows="5" maxlength="500"
+                    placeholder="500자 내로 작성해주세요."></textarea>
+            </div>
+
+            <div class="buttons_myo">
+                <button type="submit" class="post_btn">게시</button>
+                <button type="submit" class="post_btn">취소</button>
+            </div>
+        </form>
+    </div>
+
+
+</body>
+
+</html>
