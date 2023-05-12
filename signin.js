@@ -36,27 +36,16 @@ window.onload = () => {
 // }
 
 async function handleSignin() {
-    // const formData = new FormData();
 
     const email = document.getElementById("email").value
     const nickname = document.getElementById("nickname").value
     const password = document.getElementById("password").value
     const password2 = document.getElementById("password2").value
     const image = document.getElementById("image").files[0]
-    console.log(email, password, nickname, image)
 
-    // formData.append( "email", email );
-    // formData.append( "nickname", nickname );
-    // formData.append( "password", password );
-    // formData.append( "password2", password2 );
-    // formData.append( "image", image );
+
 
     const response = await fetch("http://127.0.0.1:8000/users/signup/", {
-        // headers: {
-        //     'content-type' : 'application/json',
-        // },
-        //   method: 'POST',
-        //   body: formData
         headers: {
             'content-type': 'application/json',
         },
@@ -67,16 +56,14 @@ async function handleSignin() {
             "password": password,
             "password2": password2,
             "image": image
-            //         })
         })
     })
 
-    console.log(response)
 
-    // if (response.status == 201) {
-    //     alert("회원가입을 축하합니다!")
-    //     window.location.replace('http://127.0.0.1:5500/login.html')
-    // }
+    if (response.status == 201) {
+        alert("회원가입을 축하합니다!")
+        window.location.replace('http://127.0.0.1:5500/login.html')
+    }
 
     return response
 }
