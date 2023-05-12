@@ -11,7 +11,7 @@ fetch("./header-footer.html")
 console.log("js 연결")
 
 // 로그인한 사용자의 토큰을 저장하고 있는지 확인
-const token = localStorage.getItem("token");
+const access = localStorage.getItem("access");
 
 
 // 창이 켜지면 나타나는 것들
@@ -41,13 +41,13 @@ const token = localStorage.getItem("token");
 //     newCol.addEventListener("click", async () => {
 //       try {
 //         // 로그인한 사용자인지 확인
-//         const token = localStorage.getItem("token");
-//         if (!token) {
+//         const access = localStorage.getItem("access");
+//         if (!access) {
 //           throw new Error("Unauthorized");
 //         }
     
 //         // 게시글 상세 페이지로 이동
-//         window.location.href = `/articles/${post.id}`;
+//         window.location.href = `${backend_base_url}/postings/${post.id}`;
 //       } catch (error) {
 //         // 로그인하지 않은 사용자일 경우, 로그인 페이지로 이동
 //         window.location.href = "/static/login.html";
@@ -102,12 +102,12 @@ window.onload = async function loadPostingView() {
       newCol.setAttribute("class", "col");
       newCol.addEventListener("click", async () => {
         try {
-          const token = localStorage.getItem("token");
-          if (!token) {
+          const access = localStorage.getItem("access");
+          if (!access) {
             throw new Error("Unauthorized");
           }
 
-          window.location.href = `/articles/${post.id}`;
+          window.location.href = `${backend_base_url}/postings/${post.id}`;
         } catch (error) {
           window.location.href = "/static/login.html";
         }
@@ -149,12 +149,12 @@ window.onload = async function loadPostingView() {
       newCol.setAttribute("class", "col");
       newCol.addEventListener("click", async () => {
         try {
-          const token = localStorage.getItem("token");
-          if (!token) {
+          const access = localStorage.getItem("access");
+          if (!access) {
             throw new Error("Unauthorized");
           }
     
-          window.location.href = `/articles/${post.id}`;
+          window.location.href = `${backend_base_url}/postings/${post.id}`;
         } catch (error) {
           window.location.href = "/static/login.html";
         }
@@ -260,11 +260,11 @@ window.onload = async function loadPostingView() {
       newCol.setAttribute("class", "col");
       newCol.addEventListener("click", async () => {
         try {
-          const token = localStorage.getItem("token");
-          if (!token) {
+          const access = localStorage.getItem("access");
+          if (!access) {
             throw new Error("Unauthorized");
           }
-          articleDetail(post.id);
+          window.location.href = `${backend_base_url}/postings/${post.id}`;
         } catch (error) {
           window.location.href = "/static/login.html";
         }
