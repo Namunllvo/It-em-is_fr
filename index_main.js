@@ -129,36 +129,50 @@ window.onload = async function loadPostingView() {
   };
 
   //hot 게시글 목록
-  const hot_list = document.getElementById('hotissue-list')
+  //// 아래는 검증필요!!!!! ////
+  const hot_list = document.getElementById('hotissue-list');
 
   getTop5Postings().then(postings => {
     postings.slice(0,5).forEach(post => {
       const newCol = document.createElement("div");
-      newCol.setAttribute("class", "col")
-      newCol.setAttribute("onclick", `articleDetail(${post.id})`)
-
-      const newCard = document.createElement("div")
-      newCard.setAttribute("class", "card")
-      newCard.setAttribute("id", post.id)
-      newCol.appendChild(newCard)
-
-      const articleImage = document.createElement("img")
-      articleImage.setAttribute("src", `${backend_base_url}${post.image}`)
-      articleImage.setAttribute("class", "card-img-top")
-      newCard.appendChild(articleImage)
-
-      const newCardBody = document.createElement("div")
-      newCardBody.setAttribute("class", "card-body")
-      newCard.appendChild(newCardBody)
-
-      const newCardTitle = document.createElement("h5")
-      newCardTitle.setAttribute("class", "card-title")
-      newCardTitle.innerText = post.title
-      newCardBody.appendChild(newCardTitle)
-
-      hot_list.appendChild(newCol)
+      newCol.setAttribute("class", "col");
+      newCol.addEventListener("click", async () => {
+        try {
+          const token = localStorage.getItem("token");
+          if (!token) {
+            throw new Error("Unauthorized");
+          }
+    
+          window.location.href = `/articles/${post.id}`;
+        } catch (error) {
+          window.location.href = "/login.html";
+        }
+      });
+    
+      const newCard = document.createElement("div");
+      newCard.setAttribute("class", "card");
+      newCard.setAttribute("id", post.id);
+      newCol.appendChild(newCard);
+    
+      const articleImage = document.createElement("img");
+      articleImage.setAttribute("src", `${backend_base_url}${post.image}`);
+      articleImage.setAttribute("class", "card-img-top");
+      newCard.appendChild(articleImage);
+    
+      const newCardBody = document.createElement("div");
+      newCardBody.setAttribute("class", "card-body");
+      newCard.appendChild(newCardBody);
+    
+      const newCardTitle = document.createElement("h5");
+      newCardTitle.setAttribute("class", "card-title");
+      newCardTitle.innerText = post.title;
+      newCardBody.appendChild(newCardTitle);
+    
+      hot_list.appendChild(newCol);
     });
   });
+  
+  
 
   //////////////////////////////////////////////////////////////////
 
@@ -233,28 +247,39 @@ window.onload = async function loadPostingView() {
     postings.slice(0,5).forEach(post => {
       const newCol = document.createElement("div");
       newCol.setAttribute("class", "col");
-      newCol.setAttribute("onclick", `articleDetail(${post.id})`);
-      
+      newCol.addEventListener("click", async () => {
+        try {
+          const token = localStorage.getItem("token");
+          if (!token) {
+            throw new Error("Unauthorized");
+          }
+          articleDetail(post.id);
+        } catch (error) {
+          window.location.href = "/login.html";
+        }
+      });
+  
       const newCard = document.createElement("div");
       newCard.setAttribute("class", "card");
       newCard.setAttribute("id", post.id);
       newCol.appendChild(newCard);
-
+  
       const articleImage = document.createElement("img");
       articleImage.setAttribute("src", `${backend_base_url}${post.image}`);
       articleImage.setAttribute("class", "card-img-top");
       newCard.appendChild(articleImage);
-
+  
       const newCardBody = document.createElement("div");
       newCardBody.setAttribute("class", "card-body");
       newCard.appendChild(newCardBody);
-
+  
       const newCardTitle = document.createElement("h5");
       newCardTitle.setAttribute("class", "card-title");
       newCardTitle.innerText = post.title;
       newCardBody.appendChild(newCardTitle);
-
+  
       best_list.appendChild(newCol);
     });
   });
+  
 }
