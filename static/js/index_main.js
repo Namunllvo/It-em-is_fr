@@ -50,7 +50,7 @@ const token = localStorage.getItem("token");
 //         window.location.href = `/articles/${post.id}`;
 //       } catch (error) {
 //         // 로그인하지 않은 사용자일 경우, 로그인 페이지로 이동
-//         window.location.href = "/login.html";
+//         window.location.href = "/static/login.html";
 //       }
 //     });
     
@@ -69,7 +69,7 @@ const token = localStorage.getItem("token");
 
 //     const articleImage = document.createElement("img")
 //     articleImage.setAttribute("src", `${backend_base_url}${post.image}`)
-//     articleImage.setAttribute("class", "card-img-top")
+//     articleImage.setAttribute("class", "card-img-top_nmh")
 //     newCard.appendChild(articleImage)
 
 //     const newCardBody = document.createElement("div")
@@ -92,9 +92,9 @@ const token = localStorage.getItem("token");
 window.onload = async function loadPostingView() {
   try {
     const post_list = document.getElementById("article-list");
-
+    console.log("최신",post_list)
     // 최근 5개 게시글 가져오기
-    const posts = await getTop5Postings();
+    const posts = await getpostings();
 
     // 게시글 목록을 뒤집어서 출력
     posts.slice(-5).reverse().forEach((post) => {
@@ -109,7 +109,7 @@ window.onload = async function loadPostingView() {
 
           window.location.href = `/articles/${post.id}`;
         } catch (error) {
-          window.location.href = "/login.html";
+          window.location.href = "/static/login.html";
         }
       });
 
@@ -119,7 +119,7 @@ window.onload = async function loadPostingView() {
 
       const articleImage = document.createElement("img");
       articleImage.setAttribute("src", `${backend_base_url}${post.image}`);
-      articleImage.setAttribute("class", "card-img-top");
+      articleImage.setAttribute("class", "card-img-top_nmh");
       newCard.appendChild(articleImage);
 
       const newCardBody = document.createElement("div");
@@ -143,6 +143,7 @@ window.onload = async function loadPostingView() {
   const hot_list = document.getElementById('hotissue-list');
 
   getTop5Postings().then(postings => {
+          console.log("핫",postings)
     postings.slice(0,5).forEach(post => {
       const newCol = document.createElement("div");
       newCol.setAttribute("class", "col");
@@ -155,7 +156,7 @@ window.onload = async function loadPostingView() {
     
           window.location.href = `/articles/${post.id}`;
         } catch (error) {
-          window.location.href = "/login.html";
+          window.location.href = "/static/login.html";
         }
       });
     
@@ -166,7 +167,7 @@ window.onload = async function loadPostingView() {
     
       const articleImage = document.createElement("img");
       articleImage.setAttribute("src", `${backend_base_url}${post.image}`);
-      articleImage.setAttribute("class", "card-img-top");
+      articleImage.setAttribute("class", "card-img-top_nmh");
       newCard.appendChild(articleImage);
     
       const newCardBody = document.createElement("div");
@@ -200,7 +201,7 @@ window.onload = async function loadPostingView() {
 
   //   const articleImage = document.createElement("img")
   //   articleImage.setAttribute("src", `${backend_base_url}${post.image}`)
-  //   articleImage.setAttribute("class", "card-img-top")
+  //   articleImage.setAttribute("class", "card-img-top_nmh")
   //   newCard.appendChild(articleImage)
 
   //   const newCardBody = document.createElement("div")
@@ -234,7 +235,7 @@ window.onload = async function loadPostingView() {
 
   //   const articleImage = document.createElement("img")
   //   articleImage.setAttribute("src", `${backend_base_url}${post.image}`)
-  //   articleImage.setAttribute("class", "card-img-top")
+  //   articleImage.setAttribute("class", "card-img-top_nmh")
   //   newCard.appendChild(articleImage)
 
   //   const newCardBody = document.createElement("div")
@@ -265,7 +266,7 @@ window.onload = async function loadPostingView() {
           }
           articleDetail(post.id);
         } catch (error) {
-          window.location.href = "/login.html";
+          window.location.href = "/static/login.html";
         }
       });
   
@@ -276,7 +277,7 @@ window.onload = async function loadPostingView() {
   
       const articleImage = document.createElement("img");
       articleImage.setAttribute("src", `${backend_base_url}${post.image}`);
-      articleImage.setAttribute("class", "card-img-top");
+      articleImage.setAttribute("class", "card-img-top_nmh");
       newCard.appendChild(articleImage);
   
       const newCardBody = document.createElement("div");

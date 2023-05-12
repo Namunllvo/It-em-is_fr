@@ -40,7 +40,7 @@ async function getTop5Postings() {
 
 // 좋아요 많은 게시물 top5
 async function getTop5LikedPostings() {
-  const response = await fetch(`${backend_base_url}/postings?_sort=likes&_order=desc&_limit=5`);
+  const response = await fetch(`${backend_base_url}/postings?_sort=likes_count&_order=desc&_limit=5`);
   const data = await response.json();
   return data;
 }

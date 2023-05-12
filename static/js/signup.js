@@ -50,7 +50,7 @@ async function handleSignup() {
     const nickname = document.getElementById("nickname").value
     const password = document.getElementById("password").value
     const password2 = document.getElementById("password2").value
-    const image = document.getElementById("image").files[0]
+    // const image = document.getElementById("image").files[0]
 
 
 
@@ -64,14 +64,14 @@ async function handleSignup() {
             "nickname": nickname,
             "password": password,
             "password2": password2,
-            "image": image
+            // "image": image
         })
     })
 
 
     if (response.status == 201) {
         alert("회원가입을 축하합니다!")
-        window.location.replace('http://127.0.0.1:5500/login.html')
+        window.location.replace('http://127.0.0.1:5500/static/login.html')
     }
 
     return response
@@ -92,23 +92,23 @@ function redirectToLogin() {
 // }
 
 /* 썸네일 미리보기 함수 */
-function setThumbnail(event) {
-    var reader = new FileReader();
+// function setThumbnail(event) {
+//     var reader = new FileReader();
 
-    reader.onload = function (event) {
-        var img = document.createElement("img");
-        img.setAttribute("src", event.target.result);
+//     reader.onload = function (event) {
+//         var img = document.createElement("img");
+//         img.setAttribute("src", event.target.result);
 
-        // 썸네일 크기 조절
-        img.style.width = "200px"; // 너비 200px로 설정
-        img.style.height = "auto"; // 높이 자동 설정
-        document
-            .querySelector("div#image_container")
-            .appendChild(img);
-    };
+//         // 썸네일 크기 조절
+//         img.style.width = "200px"; // 너비 200px로 설정
+//         img.style.height = "auto"; // 높이 자동 설정
+//         document
+//             .querySelector("div#image_container")
+//             .appendChild(img);
+//     };
 
-    reader.readAsDataURL(event.target.files[0]);
-}
+//     reader.readAsDataURL(event.target.files[0]);
+// }
 
 function handlelogout() {
     localStorage.removeItem("access")
