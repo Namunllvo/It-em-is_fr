@@ -1,8 +1,17 @@
+/* 헤더 푸터 가져오기 */
+fetch("./header-footer.html")
+  .then((response) => {
+    return response.text();
+  })
+  .then((data) => {
+    document.querySelector("header").innerHTML = data;
+  });
+
 window.onload = () => {
     console.log("로딩됨")
 }
 
-// async function handleSignin(){
+// async function handleSignup(){
 //     const email = document.getElementById("email").value
 //     const nickname = document.getElementById("nickname").value
 //     const password = document.getElementById("password").value
@@ -35,28 +44,17 @@ window.onload = () => {
 //     return response
 // }
 
-async function handleSignin() {
-    // const formData = new FormData();
+async function handleSignup() {
 
     const email = document.getElementById("email").value
     const nickname = document.getElementById("nickname").value
     const password = document.getElementById("password").value
     const password2 = document.getElementById("password2").value
     const image = document.getElementById("image").files[0]
-    console.log(email, password, nickname, image)
 
-    // formData.append( "email", email );
-    // formData.append( "nickname", nickname );
-    // formData.append( "password", password );
-    // formData.append( "password2", password2 );
-    // formData.append( "image", image );
+
 
     const response = await fetch("http://127.0.0.1:8000/users/signup/", {
-        // headers: {
-        //     'content-type' : 'application/json',
-        // },
-        //   method: 'POST',
-        //   body: formData
         headers: {
             'content-type': 'application/json',
         },
@@ -67,16 +65,14 @@ async function handleSignin() {
             "password": password,
             "password2": password2,
             "image": image
-            //         })
         })
     })
 
-    console.log(response)
 
-    // if (response.status == 201) {
-    //     alert("회원가입을 축하합니다!")
-    //     window.location.replace('http://127.0.0.1:5500/login.html')
-    // }
+    if (response.status == 201) {
+        alert("회원가입을 축하합니다!")
+        window.location.replace('http://127.0.0.1:5500/login.html')
+    }
 
     return response
 }
@@ -86,8 +82,8 @@ async function handleSignin() {
 function redirectToLogin() {
     window.location.href = "login.html";
 }
-// async function handleSigninButton() {
-//     const response = await handleSignin();
+// async function handleSignupButton() {
+//     const response = await handleSignup();
 
 //     if (response.status == 201) {
 //         alert("회원가입을 축하합니다!")

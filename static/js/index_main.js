@@ -1,3 +1,13 @@
+/* 헤더 푸터 가져오기 */
+fetch("./header-footer.html")
+  .then((response) => {
+    return response.text();
+  })
+  .then((data) => {
+    document.querySelector("header").innerHTML = data;
+  });
+
+
 console.log("js 연결")
 
 // 로그인한 사용자의 토큰을 저장하고 있는지 확인
