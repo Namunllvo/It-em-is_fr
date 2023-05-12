@@ -1,3 +1,13 @@
+/* 헤더 푸터 가져오기 */
+fetch("./header-footer.html")
+  .then((response) => {
+    return response.text();
+  })
+  .then((data) => {
+    document.querySelector("header").innerHTML = data;
+  });
+
+
 async function handlelogin() {
     const email = document.getElementById("email").value
     const password = document.getElementById("password").value

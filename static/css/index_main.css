@@ -1,0 +1,58 @@
+/* 최신게시글, 핫이슈, 베스트 */
+.posting_nmh {
+  display: flex;
+  margin-left: 100px;
+  margin-right: 100px;
+  margin-top: 150px;
+  height: auto;
+  min-height: 400px;
+}
+#box-left_nmh {
+  background: greenyellow;
+  flex: 1;
+  flex-direction: column;
+  text-align: center;
+  border-radius: 40px;
+  height: auto;
+}
+.box-center_nmh {
+  background: orange;
+  flex: 1;
+  flex-direction: column;
+  text-align: center;
+  border-radius: 40px;
+  height: auto;
+}
+.box-right_nmh {
+  background: yellow;
+  flex: 1;
+  flex-direction: column;
+  text-align: center;
+  border-radius: 40px;
+  height: auto;
+}
+
+#utd_nmh {
+  font-size: 15px;
+}
+
+
+#hot_nmh {
+  font-size: 15px;
+}
+
+
+#best_nmh {
+  font-size: 15px;
+}
+
+.card-img-top {
+  height: 5rem;
+  width: 100%;
+  object-fit: cover;
+}
+
+.row {
+  width: auto;
+  margin: 20px
+}
