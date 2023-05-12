@@ -52,6 +52,7 @@ async function handlelogin() {
 
     localStorage.setItem("payload", jsonPayload);
     // 디코딩된 JSON 페이로드를 문자열로 저장합니다. 이 문자열은 localStorage 객체에 "payload" 키로 저장됩니다.
-
-
+    if (response.status == 200) {
+      window.location.replace('http://127.0.0.1:5500/static/index_main.html')
+  }
 }

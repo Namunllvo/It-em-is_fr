@@ -6,6 +6,7 @@
   margin-top: 150px;
   height: auto;
   min-height: 400px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 #box-left_nmh {
   background: greenyellow;
@@ -22,6 +23,7 @@
   text-align: center;
   border-radius: 40px;
   height: auto;
+  margin: 10px
 }
 .box-right_nmh {
   background: yellow;
@@ -33,26 +35,34 @@
 }
 
 #utd_nmh {
-  font-size: 15px;
+  font-size: 40px;
 }
 
 
 #hot_nmh {
-  font-size: 15px;
+  font-size: 40px;
 }
 
 
 #best_nmh {
-  font-size: 15px;
+  font-size: 40px;
 }
 
-.card-img-top {
+.card-img-top_nmh {
   height: 5rem;
   width: 100%;
   object-fit: cover;
 }
 
-.row {
+.row_nmh {
   width: auto;
   margin: 20px
+}
+
+.col {
+  margin-top: 25px !important;
+}
+
+.card-body {
+  margin-top: 0px !important;
 }

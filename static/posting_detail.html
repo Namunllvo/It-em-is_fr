@@ -26,15 +26,12 @@
 <header></header>
 
 <body>
-    <div id="header">
-        <h1>IT'em is-헤더로 변경 예정</h1>
-    </div>
     <div id="wrap">
         <!-- 댓글 -->
         <div id="aside-left">
             <!-- 댓글리스트 postings_id/comments_set.all() start -->
             <div style="overflow:auto; height: 80%;">
-                <h1>댓글</h1>
+                <h3>댓글</h3>
                 <div class="col" id="comment-list">
                     <div class="card border-dark mb-3" style="max-width: 100%; margin: 5px;">
 
@@ -42,7 +39,7 @@
                 </div>
             </div>
             <!-- 댓글리스트 postings_id/comments_set.all() end -->
-            <div style="margin-top: 10px; height: 20%; justify-content: center; background-color: chocolate;">
+            <div style="margin-top: 10px; height: 20%; justify-content: center;">
 
                 <div class="col_">
                     <div class="col-7">
@@ -60,12 +57,11 @@
 
         <!-- 게시글 -->
         <div id="section">
-            <h1 id="article-title">게시글</h1>
-            <div id="article" style="height: 10%; background-color: yellow;">
+            <div id="article" style="height: 10%;">
                 <div id="posting-title"></div>
                 <div id="posting-user"></div>
             </div>
-            <div id="article" style="height: 300px; background-color: blueviolet;">
+            <div id="article" style="height: 300px;">
                 <div id="posting-image"
                     style="width: 50%; height: 100%; padding:10px; float: left; display: flex; justify-content: center; background-color: green;">
 
@@ -76,10 +72,11 @@
                     <!-- <span>게시글 내용</span> -->
                 </div>
             </div>
-            <div id="article" style="height: 50px; background-color: white;">
+            <div id="article" style="height: 50px;">
                 <div style="float: right; margin-top: 5px;">
-                    <a href="https://www.naver.com/"><button type="put" class="btn btn-info btn-sm">수정</button></a>
-                    <button type="delete" class="btn btn-danger btn-sm">삭제</button>
+                    <button type="put" class="btn btn-info btn-sm"
+                        onclick="location.href='/static/posting.html';">수정</button></a>
+                    <button type="delete" class="btn btn-danger btn-sm" onclick="포스팅삭제.html">삭제</button>
                 </div>
             </div>
             <div id="article" style="height: 100px; ">
@@ -111,12 +108,6 @@
             <div style="height: 300px; background-color: black;"></div>
         </div>
     </div>
-    <div id="footer">
-        <h3>푸터</h3>
-    </div>
-
-
-
 
 </body>
 
