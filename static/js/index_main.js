@@ -1,3 +1,13 @@
+/* 헤더 푸터 가져오기 */
+fetch("./header-footer.html")
+  .then((response) => {
+    return response.text();
+  })
+  .then((data) => {
+    document.querySelector("header").innerHTML = data;
+  });
+
+
 console.log("js 연결")
 // 창이 켜지면 나타나는 것들
 window.onload = async function loadPostingView() {

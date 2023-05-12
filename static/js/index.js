@@ -1,3 +1,12 @@
+/* 헤더 푸터 가져오기 */
+fetch("./header-footer.html")
+  .then((response) => {
+    return response.text();
+  })
+  .then((data) => {
+    document.querySelector("header").innerHTML = data;
+  });
+
 console.log("main_posting_list.js 메인 게시글 리스트 js 로드")
 console.log(location.origin)
 

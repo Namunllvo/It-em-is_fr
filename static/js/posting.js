@@ -46,7 +46,6 @@ fetch("./header-footer.html")
     document.querySelector("header").innerHTML = data;
   });
 
-
 /* 게시글 생성하기 */
   async function createPosting(){
     const formData = new FormData();

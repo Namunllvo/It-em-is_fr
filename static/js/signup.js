@@ -1,8 +1,17 @@
+/* 헤더 푸터 가져오기 */
+fetch("./header-footer.html")
+  .then((response) => {
+    return response.text();
+  })
+  .then((data) => {
+    document.querySelector("header").innerHTML = data;
+  });
+
 window.onload = () => {
     console.log("로딩됨")
 }
 
-// async function handleSignin(){
+// async function handleSignup(){
 //     const email = document.getElementById("email").value
 //     const nickname = document.getElementById("nickname").value
 //     const password = document.getElementById("password").value
@@ -35,7 +44,7 @@ window.onload = () => {
 //     return response
 // }
 
-async function handleSignin() {
+async function handleSignup() {
 
     const email = document.getElementById("email").value
     const nickname = document.getElementById("nickname").value
@@ -73,8 +82,8 @@ async function handleSignin() {
 function redirectToLogin() {
     window.location.href = "login.html";
 }
-// async function handleSigninButton() {
-//     const response = await handleSignin();
+// async function handleSignupButton() {
+//     const response = await handleSignup();
 
 //     if (response.status == 201) {
 //         alert("회원가입을 축하합니다!")
