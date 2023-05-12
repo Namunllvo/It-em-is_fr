@@ -18,3 +18,20 @@ async function getpostings(){
 function articleDetail(post_id) {
   window.location.href = `${backend_base_url}/postings/${post_id}/`
 }
+
+
+//// 아래 함수들은 검증필요 ////
+
+// 댓글 많은 게시물 top5
+async function getTop5Postings() {
+  const response = await fetch(`${backend_base_url}/postings?_sort=comment_count&_order=desc&_limit=5`);
+  const data = await response.json();
+  return data;
+}
+
+// 좋아요 많은 게시물 top5
+async function getTop5LikedPostings() {
+  const response = await fetch(`${backend_base_url}/postings?_sort=likes&_order=desc&_limit=5`);
+  const data = await response.json();
+  return data;
+}
