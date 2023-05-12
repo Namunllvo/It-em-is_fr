@@ -13,6 +13,9 @@
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
         crossorigin="anonymous"></script>
 
+    <!-- 페이지네이션 -->
+    <script type="text/javascript" src="https://uicdn.toast.com/tui.pagination/v3.4.0/tui-pagination.js"></script>
+
     <link rel="stylesheet" href="/static/css/index.css" />
 
 
@@ -28,79 +31,68 @@
 <header></header>
 
 <body>
-    <div id="header">
-        <h1 style="text-align:center">IT'em is-헤더로 변경 예정</h1>
-    </div>
-    <div id="navbar" style="text-align: center;">
-        <!-- 링크? 정렬? 뭐지? -->
-        <div>
-            <span style="margin-right: 10px;"><A href="URL" target="캠핑"> 최신순 </A></span>
-            <span style="margin-right: 10px;"><A href="URL" target="핫이슈"> 핫이슈 </A></span>
-            <span style="margin-right: 10px;"><A href="URL" target="베스트"> 베스트 </A></span>
-        </div>
+    <div id="section">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="collapse navbar-collapse" id="navbarNav" style="margin-left: 70%;">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="javascript:void(0);"
+                                onclick="news();">최신순</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="javascript:void(0);"
+                                onclick="hotissue();">핫이슈</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="javascript:void(0);"
+                                onclick="best();">베스트</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <div class="row" style="margin-top: 10px;">
+                <div class="col" style="max-width: 20%;">
+                    <ul class="list-group">
+                        <li class="list-group-item active" aria-current="true">카테고리</li>
+                        <li class="list-group-item">가전</li>
+                        <li class="list-group-item">취미</li>
+                        <li class="list-group-item">요리</li>
+                        <li class="list-group-item">운동</li>
+                        <li class="list-group-item">IT</li>
+                        <li class="list-group-item">데코</li>
+                        <li class="list-group-item">패션</li>
+                        <li class="list-group-item">운동</li>
+                        <li class="list-group-item">운동</li>
+                        <li class="list-group-item">IT</li>
+                        <li class="list-group-item">데코</li>
+                        <li class="list-group-item">패션</li>
+                        <li class="list-group-item">운동</li>
+                    </ul>
+                </div>
+                <div class="col" style="align-items: center;">
+                    <div class="row row-cols-1 row-cols-md-4 g-4" id="posting-list">
 
-    </div>
-    <!-- <div id="wrap"> -->
-    <div class="wrap">
-        <!-- 사이드바 - 카테고리 start -->
-        <div id="aside-left">
-            <h2>카테고리</h2>
-            <div style="margin: 10px 0px 10px 0px;">
-                <li>
-                    <A href="URL" target="캠핑"> 캠핑 </A>
-                </li>
-                <li>
-                    <A href="URL" target="가전"> 가전 </A>
-                </li>
-                <li>
-                    <A href="URL" target="취미"> 취미 </A>
-                </li>
-                <li>
-                    <A href="URL" target="요리"> 요리 </A>
-                </li>
-                <li>
-                    <A href="URL" target="운동"> 운동 </A>
-                </li>
-                <li>
-                    <A href="URL" target="IT"> IT </A>
-                </li>
-                <li>
-                    <A href="URL" target="데코"> 데코 </A>
-                </li>
-                <li>
-                    <A href="URL" target="패션"> 패션 </A>
-                </li>
+                    </div>
+
+                </div>
+                <div class="col_1" style="max-width: 10%; margin: 0px 5px 0px 5px; padding: 0;">
+                    <button type="button" class="btn btn-info btn-sm" style="color: white;"
+                        onclick="location.href='/static/posting.html';">게시글 생성하기</button>
+                </div>
             </div>
         </div>
-        <!-- 사이드바 - 카테고리 end-->
-        <!-- 게시글 카드 - 부트스트랩 start-->
-        <div class="section">
-            <h1>게시글</h1>
-            <div class="row row-cols-1 row-cols-md-4 g-4" id="posting-list">
+    </div>
+    <nav aria-label="Page navigation example" style="margin-left: 45%;">
+        <ul class="pagination" onclick="renderPagination()">
+            <li class="js-pagination a"><a class="page-link" href="#"> ◀ </a></li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#"> ▶ </a></li>
+        </ul>
+    </nav>
 
-            </div>
-        </div>
-        <!-- 게시글 카드 - 부트스트랩 end-->
-        <!-- 게시글 생성하기 버튼 start -->
-        <div id="aside-right">
-            <a href="URL - 게시글 작성하기 연결" target="_blank">
-                <button type="button" class="btn btn-info btn-sm" style="color: white;">게시글 생성하기</button>
-            </a>
-        </div>
-        <!-- 게시글 생성하기 버튼 end -->
-    </div>
-    <!-- </div> wrap end -->
-    <!-- 페이지네이션 -->
-    <div id="article_pagenation" style="text-align: center;">
-        <div>
-            <h2>페이지네이션</h2>
-        </div>
-    </div>
-
-    <div id="footer">
-        <h1>푸터</h1>
-    </div>
-    <!-- <script src="api.js"></script> -->
 </body>
 
 </html>

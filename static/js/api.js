@@ -5,12 +5,12 @@ let token = localStorage.getItem("access")
 
 /* 헤더 푸터 가져오기 */
 fetch("./header-footer.html")
-  .then((response) => {
-    return response.text();
-  })
-  .then((data) => {
-    document.querySelector("header").innerHTML = data;
-  });
+    .then((response) => {
+        return response.text();
+    })
+    .then((data) => {
+        document.querySelector("header").innerHTML = data;
+    });
 
 // 모든 게시글 가져오기
 async function getPostings() {
@@ -87,6 +87,6 @@ async function postComment(postingId, newComment) {
         response_json = await response.json()
         return response_json
     } else {
-        alert("꺼져")
+        alert(response.status)
     }
 }
