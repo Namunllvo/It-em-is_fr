@@ -47,8 +47,8 @@
 }
 
 .card-img-top {
-  height: 3rem;
-  width: px;
+  height: 5rem;
+  width: 100%;
   object-fit: cover;
 }
 
