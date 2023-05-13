@@ -42,7 +42,7 @@ window.onload = async function loadPostings() {
 
     if (posting.image) {
       postingImage.setAttribute("src", `${backend_base_url}${posting.image}`)
-      // postingImage.setAttribute("src", "https://cdn.pixabay.com/photo/2017/01/26/18/09/length-landscape-2011238__480.jpg")
+
     } else {
       postingImage.setAttribute("src", "https://cdn.pixabay.com/photo/2017/01/26/18/09/length-landscape-2011238__480.jpg")
     }
@@ -82,6 +82,7 @@ window.onload = async function loadPostings() {
   });
 }
 
+// posting_list
 // 최신순
 async function news(loadPostings) {
   // 모든 게시글 불러오기 - api.js 
@@ -156,67 +157,63 @@ async function news(loadPostings) {
   });
 
 
-  // posting_list
+  // 페이지 네이션
+  renderPagination: function pagination(currentPage) {
+    // 현재 게시물의 전체 개수가 20개 이하면 pagination을 숨깁니다.
+    if (_totalCount <= 8) return;
 
-}
+    var totalPage = Math.ceil(_totalCount / 8);
+    var pageGroup = Math.ceil(currentPage / 8);
 
-// 페이지 네이션
-renderPagination: function pagination(currentPage) {
-  // 현재 게시물의 전체 개수가 20개 이하면 pagination을 숨깁니다.
-  if (_totalCount <= 8) return;
+    var last = pageGroup * 8;
+    if (last > totalPage) last = totalPage;
+    var first = last - (8 - 1) <= 0 ? 1 : last - (8 - 1);
 
-  var totalPage = Math.ceil(_totalCount / 8);
-  var pageGroup = Math.ceil(currentPage / 8);
+    const fragmentPage = document.createDocumentFragment();
+    if (prev > 0) {
+      var allpreli = document.createElement('li');
+      allpreli.insertAdjacentHTML("beforeend", `<a href='#js-bottom' id='allprev'>&lt;&lt;</a>`);
 
-  var last = pageGroup * 8;
-  if (last > totalPage) last = totalPage;
-  var first = last - (8 - 1) <= 0 ? 1 : last - (8 - 1);
+      var preli = document.createElement('li');
+      preli.insertAdjacentHTML("beforeend", `<a href='#js-ottom' id='prev'>&lt;</a>`);
 
-  const fragmentPage = document.createDocumentFragment();
-  if (prev > 0) {
-    var allpreli = document.createElement('li');
-    allpreli.insertAdjacentHTML("beforeend", `<a href='#js-bottom' id='allprev'>&lt;&lt;</a>`);
+      fragmentPage.appendChild(allpreli);
+      fragmentPage.appendChild(preli);
+    }
 
-    var preli = document.createElement('li');
-    preli.insertAdjacentHTML("beforeend", `<a href='#js-ottom' id='prev'>&lt;</a>`);
+    for (var i = first; i <= last; i++) {
+      const li = document.createElement("li");
+      li.insertAdjacentHTML("beforeend", `<a href='#js-bottom' id='page-${i}' data-num='${i}'>${i}</a>`);
+      fragmentPage.appendChild(li);
+    }
 
-    fragmentPage.appendChild(allpreli);
-    fragmentPage.appendChild(preli);
-  }
+    if (last < totalPage) {
+      var allendli = document.createElement('li');
+      allendli.insertAdjacentHTML("beforeend", `<a href='#js-bottom'  id='allnext'>&gt;&gt;</a>`);
 
-  for (var i = first; i <= last; i++) {
-    const li = document.createElement("li");
-    li.insertAdjacentHTML("beforeend", `<a href='#js-bottom' id='page-${i}' data-num='${i}'>${i}</a>`);
-    fragmentPage.appendChild(li);
-  }
+      var endli = document.createElement('li');
+      endli.insertAdjacentHTML("beforeend", `<a  href='#js-bottom'  id='next'>&gt;</a>`);
 
-  if (last < totalPage) {
-    var allendli = document.createElement('li');
-    allendli.insertAdjacentHTML("beforeend", `<a href='#js-bottom'  id='allnext'>&gt;&gt;</a>`);
+      fragmentPage.appendChild(endli);
+      fragmentPage.appendChild(allendli);
+    }
 
-    var endli = document.createElement('li');
-    endli.insertAdjacentHTML("beforeend", `<a  href='#js-bottom'  id='next'>&gt;</a>`);
+    document.getElementById('js-pagination').appendChild(fragmentPage);
+    // 페이지 목록 생성
 
-    fragmentPage.appendChild(endli);
-    fragmentPage.appendChild(allendli);
-  }
+    $("#js-pagination a").click(function (e) {
+      e.preventDefault();
+      var $item = $(this);
+      var $id = $item.attr("id");
+      var selectedPage = $item.text();
 
-  document.getElementById('js-pagination').appendChild(fragmentPage);
-  // 페이지 목록 생성
+      if ($id == "next") selectedPage = next;
+      if ($id == "prev") selectedPage = prev;
+      if ($id == "allprev") selectedPage = 1;
+      if ($id == "allnext") selectedPage = totalPage;
 
-  $("#js-pagination a").click(function (e) {
-    e.preventDefault();
-    var $item = $(this);
-    var $id = $item.attr("id");
-    var selectedPage = $item.text();
-
-    if ($id == "next") selectedPage = next;
-    if ($id == "prev") selectedPage = prev;
-    if ($id == "allprev") selectedPage = 1;
-    if ($id == "allnext") selectedPage = totalPage;
-
-    list.renderPagination(selectedPage);//페이지네이션 그리는 함수
-    list.search(selectedPage);//페이지 그리는 함수
-  });
-};
+      list.renderPagination(selectedPage);//페이지네이션 그리는 함수
+      list.search(selectedPage);//페이지 그리는 함수
+    });
+  };
 
