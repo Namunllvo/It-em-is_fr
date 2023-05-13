@@ -1,18 +1,52 @@
 /* 헤더 푸터 가져오기 */
 fetch("./header-footer.html")
-  .then((response) => {
-    return response.text();
-  })
-  .then((data) => {
-    document.querySelector("header").innerHTML = data;
-  });
+    .then((response) => {
+        return response.text();
+    })
+    .then((data) => {
+        document.querySelector("header").innerHTML = data;
+    });
 
 
 console.log("디테일 js, 댓글, 게시글 팔로우 등등")
+console.log("response.user")
 let postingId
+let date
 
-// 댓글 작성
-async function loadComments(postingId) {    // handle=눌렀을때 실행(처리)한다는 의미
+// 댓글 작성시간 계산
+function elapsedText(date) {
+    // 초 (밀리초)
+    const seconds = 1;
+    // 분
+    const minute = seconds * 60;
+    // 시
+    const hour = minute * 60;
+    // 일
+    const day = hour * 24;
+
+    var today = new Date();
+    var elapsedTime = Math.trunc((today.getTime() - date.getTime()) / 1000);
+
+    var elapsedText = "";
+    if (elapsedTime < seconds + 10) {
+        elapsedText = "방금 전";
+    } else if (elapsedTime < minute) {
+        elapsedText = elapsedTime + "초 전";
+    } else if (elapsedTime < hour) {
+        elapsedText = Math.trunc(elapsedTime / minute) + "분 전";
+    } else if (elapsedTime < day) {
+        elapsedText = Math.trunc(elapsedTime / hour) + "시간 전";
+    } else if (elapsedTime < (day * 15)) {
+        elapsedText = Math.trunc(elapsedTime / day) + "일 전";
+    } else {
+        elapsedText = SimpleDateTimeFormat(date, "yyyy.M.d");
+    }
+
+    return elapsedText;
+}
+
+// 댓글 불러오기
+async function loadComments(postingId) {
     const response = await getComments(postingId);
     console.log(response)
 
@@ -38,17 +72,33 @@ async function loadComments(postingId) {    // handle=눌렀을때 실행(처리
 
         const newCardBody = document.createElement("div")
         newCardBody.setAttribute("class", "card-body")
+        newCardBody.innerText = comment.comment
         newCard.appendChild(newCardBody)
 
 
-        const newCardComment = document.createElement("h5")
-        newCardComment.setAttribute("class", "card-title")
-        newCardComment.innerText = comment.comment
-        newCard.appendChild(newCardComment)
+        // const newCardComment = document.createElement("h5")
+        // newCardComment.setAttribute("class", "card-title")
+        // newCardComment.innerText = comment.comment
+        // newCard.appendChild(newCardComment)
 
         const newCardTimestamp = document.createElement("h10")
-        newCardTimestamp.setAttribute("class", "card-text")
-        newCardTimestamp.innerText = comment.updated_at
+        newCardTimestamp.setAttribute("class", "card-text_")
+        // newCardTimestamp.innerText = comment.updated_at
+
+        var date = comment.updated_at
+        // var end = Date.now();
+        var date_ = new Date(date);
+        var time = elapsedText(date_)
+        newCardTimestamp.innerText = time
+
+        // var dt_ = new Date();
+        // var rush = date.getTime()
+        // console.log(comment.updated_at)
+
+        console.log("소요시간" + elapsedText(date_));
+
+
+
         newCard.appendChild(newCardTimestamp)
 
         comment_list.appendChild(newCol)
@@ -56,20 +106,25 @@ async function loadComments(postingId) {    // handle=눌렀을때 실행(처리
     });
 }
 
+// 댓글 작성
 async function submitComment() {
-    // const commentElement = document.getElementById("new-comment")
-    // const newComment = commentElement.value
-    const newComment = document.getElementById("new-comment").value
+    // Ver1
+    // const newComment = document.getElementById("new-comment").value
+    // const response = await postComment(postingId, newComment)
+
+    const commentElement = document.getElementById("new-comment")
+    const newComment = commentElement.value
     const response = await postComment(postingId, newComment)
 
     console.log(typeof newComment)
     console.log(typeof response)
 
-    // commentElement.value = ""
+    commentElement.value = ""
 
     loadComments(postingId)
 }
 
+// 게시글 불러오기
 async function loadPostings(postingId) {
     const response = await getPost(postingId);
     console.log(response)
@@ -102,13 +157,26 @@ async function loadPostings(postingId) {
     }
 
     // newImage.setAttribute("src", `${backend_base_url}${response.image}`)
-    // newImage.setAttribute("class", "img-fluid") // 부트스트랩 사용시 이미지 크기 조절
+    newImage.setAttribute("class", "img-fluid") // 부트스트랩 사용시 이미지 크기 조절
 
 
 
     postingImage.appendChild(newImage)
 }
 
+async function deletePosting(postingId) {
+    const urlParams = new URLSearchParams(window.location.search);
+    postingId = urlParams.get('posting_id');
+    // const response = await getPost(postingId);
+    const response = await deletePost(postingId);
+    console.log(response)
+    console.log(response.user)
+
+    console.log("포스트아이디")
+    console.log(postingId)
+
+    // console.log(response)
+}
 
 window.onload = async function () {
     const urlParams = new URLSearchParams(window.location.search);

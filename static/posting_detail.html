@@ -57,32 +57,33 @@
 
         <!-- 게시글 -->
         <div id="section">
-            <div id="article" style="height: 10%;">
+            <div id="article">
                 <div id="posting-title"></div>
                 <div id="posting-user"></div>
             </div>
             <div id="article" style="height: 300px;">
                 <div id="posting-image"
-                    style="width: 50%; height: 100%; padding:10px; float: left; display: flex; justify-content: center; background-color: green;">
+                    style="width: 50%; height: 100%; padding:10px; float: left; display: flex; justify-content: center; background-color: grey;">
 
                     <!-- <img src="https://t1.daumcdn.net/cfile/tistory/24283C3858F778CA2E" alt="My Image"> -->
                 </div>
                 <div id="posting-content"
-                    style="width: 50%; height: 100%; padding:10px; float: right; background-color:chartreuse">
+                    style="width: 50%; height: 100%; padding:10px; float: right; display: flex; justify-content: center; background-color:rgb(185, 186, 184)">
                     <!-- <span>게시글 내용</span> -->
                 </div>
             </div>
             <div id="article" style="height: 50px;">
-                <div style="float: right; margin-top: 5px;">
+                <div style="float: right; margin-top: 5px; margin-right: 10px;">
                     <button type="put" class="btn btn-info btn-sm"
                         onclick="location.href='/static/posting.html';">수정</button></a>
-                    <button type="delete" class="btn btn-danger btn-sm" onclick="포스팅삭제.html">삭제</button>
+                    <button type="delete" class="btn btn-danger btn-sm" onclick="deletePosting()">삭제</button>
                 </div>
-            </div>
-            <div id="article" style="height: 100px; ">
-                <div style="float: right; margin-right: 70px;">
-                    <a href="0000" onclick="좋아요버튼"></a><i class="fa-solid fa-thumbs-up"></i>
-                    <span id="like-count"></span>
+                <div id="article" style="height: 100px; ">
+                    <div style="float: right; margin-top: 5px; margin-right: 70px;">
+                        if
+                        <a href="0000" onclick="좋아요버튼"></a><i class="fa-solid fa-thumbs-up"></i>
+                        <span id="like-count"></span>
+                    </div>
                 </div>
             </div>
         </div>
