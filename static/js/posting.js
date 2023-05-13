@@ -36,6 +36,7 @@ function validation() {
 const frontend_base_url = "http://127.0.0.1:5500"
 const backend_base_url = "http://127.0.0.1:8000"
 
+let token = localStorage.getItem("access")
 
 /* 헤더 푸터 가져오기 */
 fetch("./header-footer.html")
@@ -50,34 +51,30 @@ fetch("./header-footer.html")
   async function createPosting(){
     const formData = new FormData();
 
-    const email = document.getElementById("email").value
-    const nickname = document.getElementById("nickname").value
-    const password = document.getElementById("password").value
-    const password2 = document.getElementById("password2").value
-    const image = document.getElementById("image").files[0]
+    const title = document.getElementById("post_title").value
+    const content = document.getElementById("post_content").value
+    const image = document.getElementById("post_img").files[0]
 
-    formData.append( "email", email );
-    formData.append( "nickname", nickname );
-    formData.append( "password", password );
-    formData.append( "password2", password2 );
+    formData.append( "title", title );
+    formData.append( "content", content );
     formData.append( "image", image );
 
-    const response = await fetch(`${backend_base_url}/users/signup/`, {
-        headers: {
-            'content-type' : 'application/json',
-        },
+    const response = await fetch(`${backend_base_url}/postings/`, {
           method: 'POST',
+          headers: {
+            "Authorization":`Bearer ${token}`
+          },
           body: formData
     })
 
-    console.log(response)
+    console.log(response.status, response)
     
     if (response.status == 201) {
-        alert("회원가입을 축하합니다!")
-        window.location.replace(`${backend_base_url}/login.html`)
+        alert("게시글이 생성되었습니다!")
+        window.location.replace(`${frontend_base_url}/static/index.html`)
+    }else{
+      alert(response.status)
     }
-    
-    return response
 }
 
 /* 썸네일 미리보기 함수 */
