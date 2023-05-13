@@ -18,9 +18,9 @@ async function handleProfileModify(){
     const password2 = document.getElementById("password2").value
     const response = await fetch('http://127.0.0.1:8000/users/profilemodify/<int:id>/', {
         headers: {
-            'content-type' : 'application/json',
+            "Authorization": "Bearer " + localStorage.getItem("access")
         },
-        method: 'POST',
+        method: 'PUT',
         body: JSON.stringify({
             "nickname" : nickname,
             "password" : password,
