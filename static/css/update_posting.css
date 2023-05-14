@@ -22,8 +22,6 @@ button[type="submit"] {
   /*같은 단어나열도 줄넘어가기*/
   white-space: pre-line;
   /*엔터 인식 + 줄 넘어가기*/
-  display: block;
-  max-width: 400px;
 }
 
 /* new_post.html */
@@ -41,13 +39,11 @@ button[type="submit"] {
   justify-content: center;
 }
 .new_update_img > img {
-  height: auto;
-  margin: 0 50px 0 50px;
+  width: 150px;
+  margin: 50px 20px;
 }
 
 .post-form {
-  display: block;
-  width: 600px;
   margin-top: 40px;
   padding: 20px;
   background: none;
@@ -90,4 +86,8 @@ button[type="submit"] {
   color: #ffff;
   border: double;
   border-radius: 20px;
+}
+
+.tag_myo{
+    
 }

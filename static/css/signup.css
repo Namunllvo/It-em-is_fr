@@ -1,7 +1,12 @@
-* {
-    margin: 0;
-    padding: 0;
+.container_myo>h1{
+    text-align: center;
+    padding-top: 10vh;
 }
+
+.container_myo>form{
+    text-align: center;
+}
+
 
 a {
     text-decoration: none;
@@ -10,18 +15,28 @@ a {
 
 .post_box {
     width: 100%;
-    max-width: 700px;
-    margin: 80px 200px 0px;
+    max-width: 500px;
+    margin: 10px 200px 0px;
     padding: 20px;
     box-shadow: 0 0 3px 0 gray;
 
     display: inline-block;
+    border-radius: 20px;
 }
+
+.post_box>div>input {
+    width: 100%;
+    height: 25px;
+    max-width: 300px;
+    margin: 5px;
+    box-shadow: 0 0 3px 0 gray;
+    border-radius: 10px;
+}
+
 
 .img-fluid {
     width: 150%;
     height: 300px;
-
 }
 
 .button {

@@ -19,16 +19,26 @@
         height: 100px;
         background-color: var(--headerfooter-color);
         z-index: 4;
-        display: grid;
-        grid-template-columns: 1fr 8fr 1.5fr;
         align-items: center;
         justify-content: center;
         text-align: center;
     }
     
+    .postbtn_myo{
+        float: left;
+        height: 40px;
+        width: 40px;
+        margin: 25px 0 0 20px ;
+        background-image: url('/static/img/post.png');
+        background-size: cover;
+        border: none;
+        background-color: white;
+        cursor: pointer;
+    }
     
     .logo_myo{
         display: inline-block;
+        float: left;
     }
     
     .logo_myo>img{
@@ -52,17 +62,21 @@
         display: inline-block;
         height: 100px;
         justify-items: center;
+        float: right;
+        margin-right: 30px;
     }
     
     .user-box_myo>div{
         display: inline-block;
-        text-align: left;
+        text-align: center;
+        margin-right: 10px;
     }
     
     .user-box_myo>div>ul{
         margin-top: 5px;
         margin-bottom: 0;
         padding-left: 10px;
+        cursor: pointer;
     }
 
     footer{
@@ -77,12 +91,23 @@
         justify-content: space-around;
         text-align: center;
     }
-    footer>div>ul{
-        display: inline-block;
-    }
-
+    
     .bottom_myo{
-        background-color: gray;
+        background-color: rgb(215, 215, 215);
         margin: 15px;
         height: 70%;
+        justify-items: center;
+    }
+
+    .bottom_myo>div{
+        margin: 20px;
+    }
+
+    .github_myo{
+        background-image: url('https://play-lh.googleusercontent.com/PCpXdqvUWfCW1mXhH1Y_98yBpgsWxuTSTofy3NGMo9yBTATDyzVkqU580bfSln50bFU');
+        background-size: cover;
+        border-radius: 30%;
+        height: 30px;
+        width: 30px;
+        cursor: pointer;
     }

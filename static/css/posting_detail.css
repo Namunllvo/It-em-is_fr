@@ -1,113 +1,148 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 #wrap {
-    width: 100%;
-    height: 800px;
-    display: flex;
-    flex-direction: row;
-    align-items: stretch;
+  width: 100%;
+  height: 800px;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
 
-    background-color: gray;
+  background-color: gray;
 }
 
 #aside-left {
-    float: left;
-    width: 30%;
+  float: left;
+  width: 30%;
 
-    margin: 10px;
+  margin: 10px;
 
-    /* background-color: blue; */
-
+  /* background-color: blue; */
 }
 
 #aside-right {
-    float: right;
-    width: 10%;
+  float: right;
+  width: 10%;
 
-    margin: 10px;
+  margin: 10px;
 
-    /* background-color: blue; */
-
-
+  /* background-color: blue; */
 }
 
 #section {
-    float: right;
-    width: 60%;
-    text-align: center;
+  float: right;
+  width: 60%;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
 
-    margin-top: 10px;
-    margin-bottom: 10px;
-
-    background-color: white;
+  background-color: white;
 }
 
-
 .img_ {
-    width: 300px;
-    height: 300px;
-    float: left;
+  width: 300px;
+  height: 300px;
+  float: left;
 
+  margin: 10px;
 
-    margin: 10px;
-
-    border-radius: 10%;
+  border-radius: 10%;
+}
+.posting-content_myo{
+  overflow: auto; 
+  width: 50%; 
+  height: 100%; 
+  padding:10px; 
+  float: right; 
+  display: flex; 
+  justify-content: center; 
+  background-color:rgb(185, 186, 184);
+}
+.posting-content_myo::-webkit-scrollbar {
+  display: none;
 }
 
 .card-link {
-    width: 50px;
-    text-align: right;
-    float: right;
-    text-decoration-line: none;
+  width: 50px;
+  text-align: right;
+  float: right;
+  text-decoration-line: none;
 }
 
 #article {
-    width: auto;
-    /* margin: 10px;
+  width: auto;
+  /* margin: 10px;
     padding: 10px; */
 
-    /* background-color: aqua; */
+  /* background-color: aqua; */
 }
 
-
 .col {
-    margin-right: 10px;
-    margin-bottom: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
 }
 
 #posting-title {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    font-size: 50px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 50px;
 }
 
 #posting-user {
-    height: 50px;
-    font-size: 30px;
-    text-align: right;
-    margin-right: 70px;
+  height: 50px;
+  font-size: 30px;
+  text-align: right;
+  margin-right: 70px;
 }
 
 .card-text_ {
-    margin-right: 30px;
-    text-align: right;
+  margin-right: 30px;
+  text-align: right;
 }
 
 a:link {
-    color: red;
-    text-decoration: none;
+  color: red;
+  text-decoration: none;
 }
 
 a:visited {
-    color: black;
-    text-decoration: none;
+  color: black;
+  text-decoration: none;
 }
 
 a:hover {
-    color: blue;
-    text-decoration: underline;
+  color: blue;
+  text-decoration: underline;
 }
+.comment-box_myo{
+  height: 80%;
+}
+
+.comment-box_myo>h3{
+  text-align: center;
+}
+
+.comment-list_myo {
+  overflow: auto;
+  height: 90%;
+}
+
+.comment-list_myo::-webkit-scrollbar {
+  display: none;
+}
+
+.new-comment-box_myo{
+  width: 98%;
+}
+
+.new-comment_myo{
+    width: 100%;
+    word-break: break-all;
+    /*같은 단어나열도 줄넘어가기*/
+    white-space: pre-line;
+    /*엔터 인식 + 줄 넘어가기*/
+}
+

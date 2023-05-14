@@ -6,8 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>게시글 작성</title>
-    <link rel="stylesheet" href="/static/css/posting.css">
-    <script src="/static/js/posting.js"></script>
+    <link rel="stylesheet" href="/static/css/update_posting.css">
+    <script src="/static/js/api.js"></script>
+    <script src="/static/js/update_posting.js"></script>
     <script src="/static/js/loader.js"></script>
 </head>
 
@@ -15,9 +16,7 @@
 <body>
     <div class="container-newpost">
         <div class="new_update_img">
-            <img src="/static/img/default.png">
-            <div id="image_container"></div>
-
+            <img src="/static/img/이건사야해.jpg">
         </div>
         <form class="post-form">
             <div class="new_post_form-group">
@@ -26,6 +25,7 @@
                     placeholder="제목을 입력해주세요!">
             </div>
             <div class="new_post_form-group">
+                <div id="image_container"></div>
                 <label for="post_img">사진</label>
                 <input type="file" class="form-control-file file-btn" id="post_img" name="post_img"
                     onchange="setThumbnail(event);">
@@ -43,12 +43,6 @@
                     <option value="패션">패션</option>
                 </select>
             </div>
-            <div class="url_myo">
-                <label style="display: inline-block; font-weight: bold; margin: 10px 0 10px 0;" for="post_title">구매링크</label>
-                <input style="display: inline-block;" type="url" class="form-control" id="url_myo" name="url_myo"
-                    placeholder="It'em URL Here!">
-            </div>
-
             <div class="new_post_form-group">
                 <label for="post_content">내용</label>
                 <textarea class="form-control" id="post_content" name="post_content" rows="5" maxlength="500"
@@ -56,8 +50,8 @@
             </div>
 
             <div class="buttons_myo">
-                <button type="button" class="post_btn" onclick="createPosting()">게시</button>
-                <button type="button" class="post_btn" onclick="location.href='/static/index.html';">취소</button>
+                <button type="button" class="post_btn" onclick="putPost()">수정</button>
+                <button type="button" class="post_btn" onclick="goPost()">취소</button>
             </div>
         </form>
     </div>
