@@ -7,15 +7,16 @@ fetch("./header-footer.html")
         document.querySelector("header").innerHTML = data;
     });
 
+// 해결못한 기능
+// 댓글 수정, 삭제, 토글버튼, 팔로우, 좋아요
 
-console.log("디테일 js, 댓글, 게시글 팔로우 등등")
+console.log("상세게시글 댓글, 게시글, 팔로우, 좋아요 등등")
 console.log("response.user")
 let postingId
 let date
-var count = 0;
 
-// 작성한 사용자이면 수정, 삭제 버튼을 보여주고
-// 작성한 사용자가 아니면 신고버튼을 보여준다
+
+// 댓글 수정 "⁝" comment.id 못받아옴
 function toggleBtn1() {
     // 토글 할 버튼 선택 (toggleBtn)
 
@@ -94,7 +95,7 @@ async function loadComments(postingId) {
         newCardHeader.innerText = comment.user
         newCard.append(newCardHeader)
 
-        // 댓글 삭제
+        // 댓글 삭제 토글버튼
         const toggleBtn = document.createElement("a")
         toggleBtn.setAttribute("class", "card-link")
         toggleBtn.setAttribute("id", `${comment.id}`)
@@ -132,6 +133,7 @@ async function loadComments(postingId) {
         toggleBtnDelete.innerHTML = "삭제"
 
         newCardHead.appendChild(toggleBtnDelete)
+        // 댓글 삭제 토글버튼
 
 
 
@@ -140,26 +142,14 @@ async function loadComments(postingId) {
         newCardBody.innerText = comment.comment
         newCard.appendChild(newCardBody)
 
-
-        // const newCardComment = document.createElement("h5")
-        // newCardComment.setAttribute("class", "card-title")
-        // newCardComment.innerText = comment.comment
-        // newCard.appendChild(newCardComment)
         // 작성시간
         const newCardTimestamp = document.createElement("h10")
         newCardTimestamp.setAttribute("class", "card-text_")
-        // newCardTimestamp.innerText = comment.updated_at
 
         var date = comment.updated_at
-        // var end = Date.now();
         var date_ = new Date(date);
         var time = elapsedText(date_)
         newCardTimestamp.innerText = time
-
-        // var dt_ = new Date();
-        // var rush = date.getTime()
-        // console.log(comment.updated_at)
-
         // console.log("소요시간" + elapsedText(date_));
 
 
@@ -189,7 +179,7 @@ async function submitComment() {
     loadComments(postingId)
 }
 
-// 댓글 삭제
+// 댓글 삭제- 미완성
 // async function deleteComment(postingId, commentId) {
 //     const urlParams = new URLSearchParams(window.location.search);
 //     postingId = urlParams.get('comment_id');
@@ -258,19 +248,21 @@ async function deletePosting(postingId) {
     // console.log(response)
 }
 
-async function follow() {
-    // const response = await postfollow();
-    // console.log(response)
-    console.log("로그인 작성")
-}
+// 팔로우 -미완성
+// async function follow() {
+//     // const response = await postfollow();
+//     // console.log(response)
+//     console.log("팔로우 post")
+// }
 
-async function like(postingId) {
-    const urlParams = new URLSearchParams(window.location.search);
-    postingId = urlParams.get('posting_id');
-    const response = await postlike(postingId);
-    console.log(response)
-    console.log("로그인 작성")
-}
+// 좋아요 -미완성
+// async function like(postingId) {
+//     // const urlParams = new URLSearchParams(window.location.search);
+//     // postingId = urlParams.get('posting_id');
+//     // const response = await postlike(postingId);
+//     // console.log(response)
+//     console.log("좋아요 post")
+// }
 
 window.onload = async function () {
     const urlParams = new URLSearchParams(window.location.search);
@@ -283,3 +275,4 @@ window.onload = async function () {
     // await follow(postingId);
     // await like(postingId);
 }
+

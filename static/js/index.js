@@ -7,11 +7,11 @@ fetch("./header-footer.html")
     document.querySelector("header").innerHTML = data;
   });
 
-console.log("main_posting_list.js 메인 게시글 리스트 js 로드")
+console.log("메인 게시글 모든 posting리스트 ")
 console.log(location.origin)
 
 
-
+// 상세게시글로 이동
 function postingDetail(posting_id) {
   console.log(posting_id)
   window.location.href = `${frontend_base_url}/static/posting_detail.html?posting_id=${posting_id}`
@@ -248,7 +248,6 @@ async function hotissue() {
 
 };
 
-
 // 베스트
 async function best() {
   postings = await getPostings()
@@ -328,7 +327,7 @@ async function best() {
 
 };
 
-// 페이지 네이션
+// 페이지 네이션 -미완성
 renderPagination: function pagination(currentPage) {
   // 현재 게시물의 전체 개수가 20개 이하면 pagination을 숨깁니다.
   if (_totalCount <= 8) return;

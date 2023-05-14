@@ -12,7 +12,7 @@ fetch("./header-footer.html")
         document.querySelector("header").innerHTML = data;
     });
 
-// 모든 게시글 가져오기
+// 모든 게시글 가져오기-메인게시글
 async function getPostings() {
     const response = await fetch(`${backend_base_url}/postings/`)
 
@@ -24,7 +24,7 @@ async function getPostings() {
     }
 }
 
-// url의 게시글 id 받아오기
+// url의 특정게시글 id 받아오기
 async function getPost(postingId) {
     const response = await fetch(`${backend_base_url}/postings/${postingId}/`, {
         method: 'GET',
@@ -90,9 +90,6 @@ async function deletePost(postingId) {
     console.log(postingId)
 }
 
-
-
-
 // 댓글 불러오기
 async function getComments(postingId) {
     const response = await fetch(`${backend_base_url}/postings/${postingId}/comment/`, {
@@ -112,6 +109,7 @@ async function getComments(postingId) {
         alert(response.status)
     }
 }
+
 // 댓글 작성하기
 async function postComment(postingId, newComment) {
 
@@ -144,6 +142,8 @@ async function postComment(postingId, newComment) {
 
 // 미완성부분
 // 댓글 삭제,수정하기-토글 에러로 연동 못함
+
+// 댓글 삭제
 // async function deleteComment(postingId, commentId) {
 //     const response = await fetch(`${backend_base_url}/postings/${postingId}/comment/$(commentId)`, {
 //         method: 'DELETE',
@@ -162,6 +162,7 @@ async function postComment(postingId, newComment) {
 //         alert(response.status)
 //     }
 // }
+
 // 댓글 수정하기
 // async function putComment(postingId, newComment) {
 
@@ -189,6 +190,7 @@ async function postComment(postingId, newComment) {
 //         alert(response.status)
 //     }
 // }
+
 // follow
 // async function postfollow(userId) {
 //     const response = await fetch(`${backend_base_url}/users/follow/${userId}/`, {
