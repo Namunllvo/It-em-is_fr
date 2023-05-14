@@ -12,6 +12,30 @@ console.log("디테일 js, 댓글, 게시글 팔로우 등등")
 console.log("response.user")
 let postingId
 let date
+var count = 0;
+
+// 작성한 사용자이면 수정, 삭제 버튼을 보여주고
+// 작성한 사용자가 아니면 신고버튼을 보여준다
+function toggleBtn1() {
+    // 토글 할 버튼 선택 (toggleBtn)
+
+    const toggleBtn = document.getElementsById(`${comment.id}`);
+
+    // btn1 숨기기 (display: none)
+    if (toggleBtn.style.display == 'none') {
+        toggleBtn.style.display = 'block';
+    }
+    // btn` 보이기 (display: block)
+
+    else {
+        toggleBtn.style.display = 'none';
+    }
+
+
+    // toggleBtn.addEventListener("click", clickCounter);
+
+}
+
 
 // 댓글 작성시간 계산
 function elapsedText(date) {
@@ -61,14 +85,55 @@ async function loadComments(postingId) {
         const newCard = document.createElement("div");
         newCard.setAttribute("class", "card")
         newCard.setAttribute("id", comment.id)
-        console.log(newCard)
+        // console.log(newCard)
 
         newCol.appendChild(newCard)
 
         const newCardHeader = document.createElement("div")
         newCardHeader.setAttribute("class", "card-header")
         newCardHeader.innerText = comment.user
-        newCard.appendChild(newCardHeader)
+        newCard.append(newCardHeader)
+
+        // 댓글 삭제
+        const toggleBtn = document.createElement("a")
+        toggleBtn.setAttribute("class", "card-link")
+        toggleBtn.setAttribute("id", `${comment.id}`)
+        toggleBtn.setAttribute("href", "javascript:void(0);")
+        toggleBtn.setAttribute("onclick", "toggleBtn1();")
+        toggleBtn.innerHTML = "⁝"
+
+        newCardHeader.appendChild(toggleBtn)
+
+        const newCardHead = document.createElement("div")
+        newCardHead.setAttribute("class", "card-div")
+        newCardHead.setAttribute("id", "card-div")
+        newCardHead.setAttribute("style", "display:none;")
+        toggleBtn.append(newCardHead)
+
+
+        const toggleBtnPut = document.createElement("a")
+        const toggleBtnPutbtn = document.createElement("button")
+        toggleBtnPutbtn.setAttribute("class", "btn btn-default btn-xs")
+        toggleBtnPutbtn.setAttribute("id", "card-btn1")
+        toggleBtnPutbtn.setAttribute("type", "button")
+        toggleBtnPutbtn.setAttribute("href", "javascript:void(0);")
+        toggleBtnPutbtn.setAttribute("onclick", "deleteComment();")
+        toggleBtnPutbtn.setAttribute("style", "")
+        toggleBtnPutbtn.innerHTML = "수정"
+
+        toggleBtnPut.appendChild(toggleBtnPutbtn)
+        newCardHead.appendChild(toggleBtnPutbtn)
+
+        const toggleBtnDelete = document.createElement("a")
+        toggleBtnDelete.setAttribute("class", "btn btn-light")
+        toggleBtnDelete.setAttribute("id", "card-btn2")
+        toggleBtnDelete.setAttribute("href", "javascript:void(0);")
+        toggleBtnDelete.setAttribute("style", "")
+        toggleBtnDelete.innerHTML = "삭제"
+
+        newCardHead.appendChild(toggleBtnDelete)
+
+
 
         const newCardBody = document.createElement("div")
         newCardBody.setAttribute("class", "card-body")
@@ -80,7 +145,7 @@ async function loadComments(postingId) {
         // newCardComment.setAttribute("class", "card-title")
         // newCardComment.innerText = comment.comment
         // newCard.appendChild(newCardComment)
-
+        // 작성시간
         const newCardTimestamp = document.createElement("h10")
         newCardTimestamp.setAttribute("class", "card-text_")
         // newCardTimestamp.innerText = comment.updated_at
@@ -95,7 +160,7 @@ async function loadComments(postingId) {
         // var rush = date.getTime()
         // console.log(comment.updated_at)
 
-        console.log("소요시간" + elapsedText(date_));
+        // console.log("소요시간" + elapsedText(date_));
 
 
 
@@ -123,6 +188,21 @@ async function submitComment() {
 
     loadComments(postingId)
 }
+
+// 댓글 삭제
+// async function deleteComment(postingId, commentId) {
+//     const urlParams = new URLSearchParams(window.location.search);
+//     postingId = urlParams.get('comment_id');
+//     const response = await deleteComment(postingId);
+//     console.log(response)
+//     console.log("댓글수정")
+//     // console.log(typeof newComment)
+//     // console.log(typeof response)
+
+//     // commentElement.value = ""
+
+//     // loadComments(postingId)
+// }
 
 // 게시글 불러오기
 async function loadPostings(postingId) {
@@ -163,7 +243,7 @@ async function loadPostings(postingId) {
 
     postingImage.appendChild(newImage)
 }
-
+// 게시글 삭제하기
 async function deletePosting(postingId) {
     const urlParams = new URLSearchParams(window.location.search);
     postingId = urlParams.get('posting_id');
@@ -178,6 +258,20 @@ async function deletePosting(postingId) {
     // console.log(response)
 }
 
+async function follow() {
+    // const response = await postfollow();
+    // console.log(response)
+    console.log("로그인 작성")
+}
+
+async function like(postingId) {
+    const urlParams = new URLSearchParams(window.location.search);
+    postingId = urlParams.get('posting_id');
+    const response = await postlike(postingId);
+    console.log(response)
+    console.log("로그인 작성")
+}
+
 window.onload = async function () {
     const urlParams = new URLSearchParams(window.location.search);
     postingId = urlParams.get('posting_id');
@@ -186,4 +280,6 @@ window.onload = async function () {
 
     await loadPostings(postingId);
     await loadComments(postingId);
+    // await follow(postingId);
+    // await like(postingId);
 }

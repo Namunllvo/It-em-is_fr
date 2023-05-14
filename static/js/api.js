@@ -139,94 +139,98 @@ async function postComment(postingId, newComment) {
         alert(response.status)
     }
 }
-// 댓글 삭제하기
-async function deleteComment(postingId, commentId) {
-    const response = await fetch(`${backend_base_url}/postings/${postingId}/comment/$(commentId)`, {
-        method: 'DELETE',
-        // credentials: "include",
-        headers: {
-            //"application/json; charset=utf-8"
-            'Authorization': `Bearer ${token}`,
-        },
-    }
-    )
 
-    if (response.status == 200) {
-        response_json = await response.json()
-        return response_json
-    } else {
-        alert(response.status)
-    }
-}
+
+
+// 미완성부분
+// 댓글 삭제,수정하기-토글 에러로 연동 못함
+// async function deleteComment(postingId, commentId) {
+//     const response = await fetch(`${backend_base_url}/postings/${postingId}/comment/$(commentId)`, {
+//         method: 'DELETE',
+//         // credentials: "include",
+//         headers: {
+//             //"application/json; charset=utf-8"
+//             'Authorization': `Bearer ${token}`,
+//         },
+//     }
+//     )
+
+//     if (response.status == 200) {
+//         response_json = await response.json()
+//         return response_json
+//     } else {
+//         alert(response.status)
+//     }
+// }
 // 댓글 수정하기
-async function putComment(postingId, newComment) {
+// async function putComment(postingId, newComment) {
 
 
-    const response = await fetch(`${backend_base_url}/postings/${postingId}/comment/`, {
-        // mode: 'no-cors',
-        method: 'POST',
-        // credentials: "include",
-        headers: {
-            'Content-Type': "application/json",      //"application/json; charset=utf-8"
-            'Authorization': `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-            "comment": newComment,
-        })
-    }
-    )
-    console.log(response)
-    console.log(typeof response)
+//     const response = await fetch(`${backend_base_url}/postings/${postingId}/comment/`, {
+//         // mode: 'no-cors',
+//         method: 'POST',
+//         // credentials: "include",
+//         headers: {
+//             'Content-Type': "application/json",      //"application/json; charset=utf-8"
+//             'Authorization': `Bearer ${token}`,
+//         },
+//         body: JSON.stringify({
+//             "comment": newComment,
+//         })
+//     }
+//     )
+//     console.log(response)
+//     console.log(typeof response)
 
-    if (response.status == 200) {
-        response_json = await response.json()
-        return response_json
-    } else {
-        alert(response.status)
-    }
-}
+//     if (response.status == 200) {
+//         response_json = await response.json()
+//         return response_json
+//     } else {
+//         alert(response.status)
+//     }
+// }
 // follow
-async function postfollow(userId) {
-    const response = await fetch(`${backend_base_url}/users/follow/${userId}/`, {
-        // mode: 'no-cors',
-        method: 'POST',
-        // credentials: "include",
-        headers: {
-            'Content-Type': "application/json",      //"application/json; charset=utf-8"
-            'Authorization': `Bearer ${token}`,
-        },
-    }
-    )
-    console.log(response)
-    console.log(typeof response)
+// async function postfollow(userId) {
+//     const response = await fetch(`${backend_base_url}/users/follow/${userId}/`, {
+//         // mode: 'no-cors',
+//         method: 'POST',
+//         // credentials: "include",
+//         headers: {
+//             'Content-Type': "application/json",      //"application/json; charset=utf-8"
+//             'Authorization': `Bearer ${token}`,
+//         },
+//     }
+//     )
+//     console.log(response)
+//     console.log(typeof response)
 
-    if (response.status == 200) {
-        response_json = await response.json()
-        return response_json
-    } else {
-        alert(response.status)
-    }
-}
+//     if (response.status == 200) {
+//         response_json = await response.json()
+//         return response_json
+//     } else {
+//         alert(response.status)
+//     }
+// }
 
 // like
-async function postlike(userId) {
-    const response = await fetch(`${backend_base_url}/postings/${userId}/like/`, {
-        // mode: 'no-cors',
-        method: 'POST',
-        // credentials: "include",
-        headers: {
-            'Content-Type': "application/json",      //"application/json; charset=utf-8"
-            'Authorization': `Bearer ${token}`,
-        },
-    }
-    )
-    console.log(response)
-    console.log(typeof response)
+// async function postlike(userId) {
+//     const response = await fetch(`${backend_base_url}/postings/${userId}/like/`, {
+//         // mode: 'no-cors',
+//         method: 'POST',
+//         // credentials: "include",
+//         headers: {
+//             'Content-Type': "application/json",      //"application/json; charset=utf-8"
+//             'Authorization': `Bearer ${token}`,
+//         },
+//     }
+//     )
+//     console.log(response)
+//     console.log(typeof response)
 
-    if (response.status == 200) {
-        response_json = await response.json()
-        return response_json
-    } else {
-        alert(response.status)
-    }
-}
+//     if (response.status == 200) {
+//         response_json = await response.json()
+//         return response_json
+//     } else {
+//         alert(response.status)
+//     }
+// }
