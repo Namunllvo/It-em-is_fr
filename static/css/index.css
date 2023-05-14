@@ -59,6 +59,12 @@
     /* background-color: aqua; */
 }
 
-#footer {
-    /* background-color: gray; */
+.imgdiv {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.card {
+    width: 150px;
 }
