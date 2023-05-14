@@ -1,12 +1,3 @@
-/* 헤더 푸터 가져오기 */
-fetch("./header-footer.html")
-  .then((response) => {
-    return response.text();
-  })
-  .then((data) => {
-    document.querySelector("header").innerHTML = data;
-  });
-
 
 console.log("디테일 js, 댓글, 게시글 팔로우 등등")
 let postingId

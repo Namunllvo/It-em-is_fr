@@ -1,6 +1,10 @@
-* {
-    margin: 0;
-    padding: 0;
+.container_myo>h1{
+    text-align: center;
+    padding-top: 10vh;
+}
+
+.container_myo>form{
+    text-align: center;
 }
 
 a {
@@ -10,18 +14,12 @@ a {
 
 .post_box {
     width: 100%;
-    max-width: 700px;
-    margin: 80px 200px 0px;
+    max-width: 300px;
+    margin: 10px 200px 0px;
     padding: 20px;
     box-shadow: 0 0 3px 0 gray;
 
     display: inline-block;
-}
-
-.img-fluid {
-    width: 150%;
-    height: 300px;
-
 }
 
 .button {
@@ -31,11 +29,6 @@ a {
 label {
     cursor: pointer;
     font-size: 1em;
-}
-
-/* 못생긴 기존 input 숨기기 */
-#chooseFile {
-    visibility: hidden;
 }
 
 /* .form-floating mb-2 {
