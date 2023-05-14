@@ -6,8 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>게시글 작성</title>
-    <link rel="stylesheet" href="/static/css/posting.css">
-    <script src="/static/js/posting.js"></script>
+    <link rel="stylesheet" href="/static/css/update_posting.css">
+    <script src="/static/js/api.js"></script>
+    <script src="/static/js/update_posting.js"></script>
     <script src="/static/js/loader.js"></script>
 </head>
 
@@ -49,8 +50,8 @@
             </div>
 
             <div class="buttons_myo">
-                <button type="button" class="post_btn" onclick="createPosting()">게시</button>
-                <button type="button" class="post_btn" onclick="location.href='/static/index.html';">취소</button>
+                <button type="button" class="post_btn" onclick="putPost()">수정</button>
+                <button type="button" class="post_btn" onclick="goPost()">취소</button>
             </div>
         </form>
     </div>

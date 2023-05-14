@@ -21,13 +21,16 @@ a {
     box-shadow: 0 0 3px 0 gray;
 
     display: inline-block;
+    border-radius: 20px;
 }
 
 .post_box>div>input {
     width: 100%;
+    height: 25px;
     max-width: 300px;
     margin: 5px;
     box-shadow: 0 0 3px 0 gray;
+    border-radius: 10px;
 }
 
 

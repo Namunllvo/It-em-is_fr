@@ -36,20 +36,17 @@
     <div id="section">
         <div class="container-fluid">
             <!-- 게시글 최신순(최근 작성), 핫이슈(댓글수), 베스트(좋아요수) 정렬 -->
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light" style="margin-right: 70%;">
                 <div class="collapse navbar-collapse" id="navbarNav" style="margin-left: 70%;">
                     <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" id="sortNews" href="javascript:void(0);"
-                                onclick="news();">최신순</a>
+                        <li class="nav-item" >
+                            <a class="nav-link active" aria-current="page" id="sortNews" onclick="news();">최신순</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="javascript:void(0);"
-                                onclick="hotissue();">핫이슈</a>
+                            <a class="nav-link active" aria-current="page" onclick="hotissue();">핫이슈</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="javascript:void(0);"
-                                onclick="best();">베스트</a>
+                            <a class="nav-link active" aria-current="page" onclick="best();">베스트</a>
                         </li>
                     </ul>
                 </div>
@@ -84,12 +81,6 @@
 
                 </div>
                 <!-- 게시글 리스트 card end -->
-
-
-                <div class="col_1" style="max-width: 10%; margin: 0px 5px 0px 5px; padding: 0;">
-                    <button type="button" class="btn btn-info btn-sm" style="color: white;"
-                        onclick="location.href='/static/posting.html';">게시글 생성하기</button>
-                </div>
             </div>
         </div>
     </div>

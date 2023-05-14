@@ -5,28 +5,6 @@ let postingId
 let date
 
 
-// 댓글 수정 "⁝" comment.id 못받아옴
-function toggleBtn1() {
-    // 토글 할 버튼 선택 (toggleBtn)
-
-    const toggleBtn = document.getElementsById(`${comment.id}`);
-
-    // btn1 숨기기 (display: none)
-    if (toggleBtn.style.display == 'none') {
-        toggleBtn.style.display = 'block';
-    }
-    // btn` 보이기 (display: block)
-
-    else {
-        toggleBtn.style.display = 'none';
-    }
-
-
-    // toggleBtn.addEventListener("click", clickCounter);
-
-}
-
-
 // 댓글 작성시간 계산
 function elapsedText(date) {
     // 초 (밀리초)
@@ -61,13 +39,21 @@ function elapsedText(date) {
 
 // 댓글 불러오기
 async function loadComments(postingId) {
+    // 현재 로그인 유저
+    const payload = localStorage.getItem("payload");
+    const payload_parse = JSON.parse(payload)
+    const current_user = payload_parse.nickname
+
     const response = await getComments(postingId);
-    console.log(response)
 
     const comment_list = document.getElementById("comment-list")
     comment_list.innerHTML = ""
 
-    response.forEach(comment => {
+    // 최신순 배열을 위해 역순배열 reverse()
+    response.reverse().forEach(comment => {
+        // 댓글 작성 유저
+        const comment_user = comment['user']
+
         const newCol = document.createElement("div");
         newCol.setAttribute("class", "col")
         // 19강 참고
@@ -79,53 +65,44 @@ async function loadComments(postingId) {
 
         newCol.appendChild(newCard)
 
+        // 댓글 작성 유저 표시
         const newCardHeader = document.createElement("div")
         newCardHeader.setAttribute("class", "card-header")
-        newCardHeader.innerText = comment.user
+        newCardHeader.setAttribute("style", "font-style: solid; font-size:20px")
+        newCardHeader.innerText = `By ${comment.user}`
         newCard.append(newCardHeader)
 
-        // 댓글 삭제 토글버튼
-        const toggleBtn = document.createElement("a")
-        toggleBtn.setAttribute("class", "card-link")
-        toggleBtn.setAttribute("id", `${comment.id}`)
-        toggleBtn.setAttribute("href", "javascript:void(0);")
-        toggleBtn.setAttribute("onclick", "toggleBtn1();")
-        toggleBtn.innerHTML = "⁝"
+        // 로그인 유저와 댓글 작성자가 같다면 수정 삭제 버튼 보이기
+        if (current_user == comment_user){
+            // 수정 삭제 버튼 공간
+            const newCardHead = document.createElement("div")
+            newCardHead.setAttribute("class", "card-div")
+            newCardHead.setAttribute("style", "display: inline-block; float: right;")
+            newCardHead.setAttribute("id", "card-div")
+            // newCardHead.setAttribute("style", "display:none;")
+            newCardHeader.append(newCardHead)
 
-        newCardHeader.appendChild(toggleBtn)
+            // 수정 버튼
+            const toggleBtnPutbtn = document.createElement("button")
+            toggleBtnPutbtn.setAttribute("class", "btn btn-default btn-xs")
+            toggleBtnPutbtn.setAttribute("id", "card-btn1")
+            toggleBtnPutbtn.setAttribute("type", "button")
+            toggleBtnPutbtn.setAttribute("onclick", "putComment();")
+            toggleBtnPutbtn.setAttribute("style", "")
+            toggleBtnPutbtn.innerHTML = "수정"
+            
+            newCardHead.appendChild(toggleBtnPutbtn)
+            
+            // 삭제 버튼
+            const toggleBtnDelete = document.createElement("button")
+            toggleBtnDelete.setAttribute("class", "btn btn-light")
+            toggleBtnDelete.setAttribute("id", "card-btn2")
+            toggleBtnPutbtn.setAttribute("onclick", "deleteComment();")
+            toggleBtnDelete.setAttribute("style", "")
+            toggleBtnDelete.innerHTML = "삭제"
 
-        const newCardHead = document.createElement("div")
-        newCardHead.setAttribute("class", "card-div")
-        newCardHead.setAttribute("id", "card-div")
-        newCardHead.setAttribute("style", "display:none;")
-        toggleBtn.append(newCardHead)
-
-
-        const toggleBtnPut = document.createElement("a")
-        const toggleBtnPutbtn = document.createElement("button")
-        toggleBtnPutbtn.setAttribute("class", "btn btn-default btn-xs")
-        toggleBtnPutbtn.setAttribute("id", "card-btn1")
-        toggleBtnPutbtn.setAttribute("type", "button")
-        toggleBtnPutbtn.setAttribute("href", "javascript:void(0);")
-        toggleBtnPutbtn.setAttribute("onclick", "deleteComment();")
-        toggleBtnPutbtn.setAttribute("style", "")
-        toggleBtnPutbtn.innerHTML = "수정"
-
-        toggleBtnPut.appendChild(toggleBtnPutbtn)
-        newCardHead.appendChild(toggleBtnPutbtn)
-
-        const toggleBtnDelete = document.createElement("a")
-        toggleBtnDelete.setAttribute("class", "btn btn-light")
-        toggleBtnDelete.setAttribute("id", "card-btn2")
-        toggleBtnDelete.setAttribute("href", "javascript:void(0);")
-        toggleBtnDelete.setAttribute("style", "")
-        toggleBtnDelete.innerHTML = "삭제"
-
-        newCardHead.appendChild(toggleBtnDelete)
-        // 댓글 삭제 토글버튼
-
-
-
+            newCardHead.appendChild(toggleBtnDelete)
+        }
         const newCardBody = document.createElement("div")
         newCardBody.setAttribute("class", "card-body")
         newCardBody.innerText = comment.comment
@@ -146,7 +123,6 @@ async function loadComments(postingId) {
         newCard.appendChild(newCardTimestamp)
 
         comment_list.appendChild(newCol)
-
     });
 }
 
@@ -160,11 +136,8 @@ async function submitComment() {
     const newComment = commentElement.value
     const response = await postComment(postingId, newComment)
 
-    console.log(typeof newComment)
-    console.log(typeof response)
-
     commentElement.value = ""
-
+    
     loadComments(postingId)
 }
 
@@ -175,18 +148,85 @@ async function submitComment() {
 //     const response = await deleteComment(postingId);
 //     console.log(response)
 //     console.log("댓글수정")
-//     // console.log(typeof newComment)
-//     // console.log(typeof response)
+    // console.log(typeof newComment)
+    // console.log(typeof response)
 
-//     // commentElement.value = ""
+    // commentElement.value = ""
 
-//     // loadComments(postingId)
+    // loadComments(postingId)
 // }
+
+// 게시글 수정페이지로 이동
+async function putPosting(postingId) {
+    const urlParams = new URLSearchParams(window.location.search);
+    postingId = urlParams.get('posting_id');
+
+    // 현재 로그인 유저
+    const payload = localStorage.getItem("payload");
+    const payload_parse = JSON.parse(payload)
+    const current_user = payload_parse.nickname
+    // 게시글 작성 유저
+    const response = await getPost(postingId);
+    const posting_user = response.user
+
+    const put = confirm("글을 수정하시겠습니까?")
+    // 확인버튼
+    if (put == true) {
+        // 작성한 유저가 맞음
+        if (current_user == posting_user) {
+            // 수정페이지 이동
+            window.location.replace(`${frontend_base_url}/static/update_posting.html?posting_id=${postingId}`)
+        }
+        // 작성한 유저가 아님
+        else {
+            alert("수정할 권한이 없습니다")
+            location.reload()
+        }
+    }
+    // 취소버튼
+    else {
+        alert("수정을 취소합니다.")
+        location.reload()
+    }
+}
+
+// 게시글 삭제하기
+async function deletePosting(postingId) {
+    const urlParams = new URLSearchParams(window.location.search);
+    postingId = urlParams.get('posting_id');
+    // const response = await getPost(postingId);
+    deletePost(postingId);
+}
 
 // 게시글 불러오기
 async function loadPostings(postingId) {
+    // 현재 로그인 유저
+    const payload = localStorage.getItem("payload");
+    const payload_parse = JSON.parse(payload)
+    const current_user = payload_parse.nickname
+    // 게시글 작성 유저
     const response = await getPost(postingId);
-    console.log(response)
+    const posting_user = response.user
+
+    // 현재 로그인 유저와 게시글 작성 유저가 같을 때 수정,삭제 보이기
+    if (current_user == posting_user){
+        let articleBtn = document.getElementById("articleBtn")
+
+        let putBtn = document.createElement("button")
+        putBtn.innerText="수정"
+        putBtn.type="put"
+        putBtn.className="btn btn-info btn-sm"
+        putBtn.setAttribute("onclick","putPosting()")
+        
+        let deleteBtn = document.createElement("button")
+        deleteBtn.innerText="삭제"
+        deleteBtn.type="delete"
+        deleteBtn.className="btn btn-danger btn-sm"
+        deleteBtn.setAttribute("onclick","deletePosting()")
+        
+        articleBtn.appendChild(putBtn)
+        articleBtn.appendChild(deleteBtn)
+    }
 
     const postingTitle = document.getElementById("posting-title")
     const postingImage = document.getElementById("posting-image")
@@ -194,16 +234,10 @@ async function loadPostings(postingId) {
     const postingUser = document.getElementById("posting-user")
     const postingLikes = document.getElementById("like-count")
     const followUser = document.getElementById("follow-user")
-    console.log(postingTitle)
-    console.log(postingImage)
-    console.log(postingContent)
-    console.log(postingUser)
-    console.log(postingLikes)
-    console.log(followUser)
 
     postingTitle.innerText = response.title
     postingContent.innerText = response.content
-    postingUser.innerText = response.user
+    postingUser.innerText = `작성자 ${response.user}`
     postingLikes.innerText = response.likes_count
     followUser.innerText = response.user
     const newImage = document.createElement("img")
@@ -222,20 +256,7 @@ async function loadPostings(postingId) {
 
     postingImage.appendChild(newImage)
 }
-// 게시글 삭제하기
-async function deletePosting(postingId) {
-    const urlParams = new URLSearchParams(window.location.search);
-    postingId = urlParams.get('posting_id');
-    // const response = await getPost(postingId);
-    const response = await deletePost(postingId);
-    console.log(response)
-    console.log(response.user)
 
-    console.log("포스트아이디")
-    console.log(postingId)
-
-    // console.log(response)
-}
 
 // 팔로우 -미완성
 // async function follow() {
@@ -256,12 +277,10 @@ async function deletePosting(postingId) {
 window.onload = async function () {
     const urlParams = new URLSearchParams(window.location.search);
     postingId = urlParams.get('posting_id');
-    console.log("포스트아이디")
-    console.log(postingId)
+    console.log("postingId",postingId)
 
     await loadPostings(postingId);
     await loadComments(postingId);
     // await follow(postingId);
     // await like(postingId);
 }
-

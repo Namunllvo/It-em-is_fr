@@ -37,9 +37,23 @@
     margin: 10px;
 
     /* background-color: blue; */
-
-
 }
+
+.navbar-nav>li{
+    width: fit-content;
+}
+
+.navbar-nav>li>a{
+    width: 70px;
+    cursor: pointer;
+}
+
+.navbar-nav>li>a:hover{
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+
 
 .section {
     width: 80%;
@@ -60,13 +74,13 @@
 }
 
 .imgdiv {
-    width: 150px;
-    height: 150px;
+    width: 100%;
+    height: fit-content;
     object-fit: cover;
 }
 
 .card {
-    width: 150px;
+    width: 250px;
 }
 
 .card-img-top{

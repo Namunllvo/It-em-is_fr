@@ -63,10 +63,10 @@ window.onload = async function loadPostings() {
     newCardContent.innerText = posting.content
     newCardBody.appendChild(newCardContent)
 
-    const newCardLikeCount = document.createElement("h6")
-    newCardLikeCount.setAttribute("class", "card-text")
-    newCardLikeCount.innerText = posting.likes_count
-    newCardBody.appendChild(newCardLikeCount)
+    const newCardCount = document.createElement("h6")
+    newCardCount.setAttribute("class", "card-text")
+    newCardCount.innerText = posting.likes_count
+    newCardBody.appendChild(newCardCount)
 
     const newCardCommentCount = document.createElement("h6")
     newCardCommentCount.setAttribute("class", "card-text")
@@ -80,20 +80,24 @@ window.onload = async function loadPostings() {
 
   });
 }
+// 보여지는 글자수 제한함수
+function truncateString(str, maxLength) {
+  if (str.length > maxLength) {
+    return str.substring(0, maxLength - 3) + "...";
+  } else {
+    return str;
+  }
+}
 
 // posting_list
 // 최신순
 async function news() {
   postings = await getPostings()
   console.log("0-max 까지 순차적으로")
-  const reverpostings = postings.reverse()
-  console.log("역순")
-  console.log(reverpostings)
-
   const posting_list = document.getElementById("posting-list")
   posting_list.innerHTML = ""
-
-  postings.forEach(posting => {
+  // 생성시간 내림차순 reverse()
+  postings.reverse().forEach(posting => {
     const newCol = document.createElement("div");
     newCol.setAttribute("class", "col")
     // 상세 게시물로 이동
@@ -137,24 +141,16 @@ async function news() {
 
     const newCardContent = document.createElement("h6")
     newCardContent.setAttribute("class", "card-text")
-    newCardContent.innerText = posting.content
+    newCardContent.setAttribute("id", "card-text_myo")
+    newCardContent.innerText = truncateString(posting.content, 20); //보이기 20자 제한
     newCardBody.appendChild(newCardContent)
 
-    const newCardLikeCount = document.createElement("h6")
-    newCardLikeCount.setAttribute("class", "card-text")
-    newCardLikeCount.innerText = posting.likes_count
-    newCardBody.appendChild(newCardLikeCount)
-
-    const newCardCommentCount = document.createElement("h6")
-    newCardCommentCount.setAttribute("class", "card-text")
-    newCardCommentCount.innerText = posting.comments_count
-    newCardBody.appendChild(newCardCommentCount)
-
-
+    const newCardCount = document.createElement("h6")
+    newCardCount.setAttribute("class", "card-text")
+    newCardCount.innerText = `좋아요 ${posting.likes_count} | 댓글 ${posting.comments_count}`
+    newCardBody.appendChild(newCardCount)
 
     posting_list.appendChild(newCol)
-
-
   });
 
 };
@@ -217,23 +213,16 @@ async function hotissue() {
 
     const newCardContent = document.createElement("h6")
     newCardContent.setAttribute("class", "card-text")
-    newCardContent.innerText = posting.content
+    newCardContent.setAttribute("id", "card-text_myo")
+    newCardContent.innerText = truncateString(posting.content, 20); //보이기 20자 제한
     newCardBody.appendChild(newCardContent)
 
-    const newCardLikeCount = document.createElement("h6")
-    newCardLikeCount.setAttribute("class", "card-text")
-    newCardLikeCount.innerText = posting.likes_count
-    newCardBody.appendChild(newCardLikeCount)
-
-    const newCardCommentCount = document.createElement("h6")
-    newCardCommentCount.setAttribute("class", "card-text")
-    newCardCommentCount.innerText = posting.comments_count
-    newCardBody.appendChild(newCardCommentCount)
-
-
+    const newCardCount = document.createElement("h6")
+    newCardCount.setAttribute("class", "card-text")
+    newCardCount.innerText = `좋아요 ${posting.likes_count} | 댓글 ${posting.comments_count}`
+    newCardBody.appendChild(newCardCount)
 
     posting_list.appendChild(newCol)
-
 
   });
 
@@ -296,24 +285,16 @@ async function best() {
 
     const newCardContent = document.createElement("h6")
     newCardContent.setAttribute("class", "card-text")
-    newCardContent.innerText = posting.content
+    newCardContent.setAttribute("id", "card-text_myo")
+    newCardContent.innerText = truncateString(posting.content, 20); //보이기 20자 제한
     newCardBody.appendChild(newCardContent)
 
-    const newCardLikeCount = document.createElement("h6")
-    newCardLikeCount.setAttribute("class", "card-text")
-    newCardLikeCount.innerText = posting.likes_count
-    newCardBody.appendChild(newCardLikeCount)
-
-    const newCardCommentCount = document.createElement("h6")
-    newCardCommentCount.setAttribute("class", "card-text")
-    newCardCommentCount.innerText = posting.comments_count
-    newCardBody.appendChild(newCardCommentCount)
-
-
+    const newCardCount = document.createElement("h6")
+    newCardCount.setAttribute("class", "card-text")
+    newCardCount.innerText = `좋아요 ${posting.likes_count} | 댓글 ${posting.comments_count}`
+    newCardBody.appendChild(newCardCount)
 
     posting_list.appendChild(newCol)
-
-
   });
 
 };

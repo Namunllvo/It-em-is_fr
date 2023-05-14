@@ -5,6 +5,10 @@ function handlelogout() {
     window.location.replace('http://127.0.0.1:5500/static/login.html')
 }
 
+function goBack() {
+    window.history.back();
+}
+
 async function injectHeader() {
     /* 헤더 푸터 가져오기 */
     fetch("./header-footer.html")

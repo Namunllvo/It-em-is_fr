@@ -42,15 +42,12 @@ async function deletePost(postingId) {
     // 글을 작성한 유저가 맞으면 confirm 글 삭제할건지 확인후 삭제
     // 글 작성한 유저가 아니면 alert 삭제할 권한이 없습니다 
     const dlt = confirm("글을 삭제하시겠습니까?")
-    console.log(dlt);
     // 확인버튼
     if (dlt == true) {
         // 삭제
         const response = await fetch(`${backend_base_url}/postings/${postingId}/`, {
             method: 'DELETE',
-            // credentials: "include",
             headers: {
-                //"application/json; charset=utf-8"
                 'Authorization': `Bearer ${token}`,
             },
         }
@@ -85,9 +82,7 @@ async function deletePost(postingId) {
 async function getComments(postingId) {
     const response = await fetch(`${backend_base_url}/postings/${postingId}/comment/`, {
         method: 'GET',
-        // credentials: "include",
         headers: {
-            //"application/json; charset=utf-8"
             'Authorization': `Bearer ${token}`,
         },
     }
@@ -106,15 +101,60 @@ async function postComment(postingId, newComment) {
 
 
     const response = await fetch(`${backend_base_url}/postings/${postingId}/comment/`, {
-        // mode: 'no-cors',
         method: 'POST',
-        // credentials: "include",
         headers: {
             'Content-Type': "application/json",      //"application/json; charset=utf-8"
             'Authorization': `Bearer ${token}`,
         },
         body: JSON.stringify({
             "comment": newComment,
+        })
+    }
+    )
+
+    if (response.status == 200) {
+        response_json = await response.json()
+        return response_json
+    } else {
+        alert(response.status)
+    }
+}
+
+
+
+// 미완성부분
+
+// 댓글 삭제
+async function deleteComment(postingId, commentId) {
+    const response = await fetch(`${backend_base_url}/postings/${postingId}/comment/$(commentId)`, {
+        method: 'DELETE',
+        headers: {
+            'Authorization': `Bearer ${token}`,
+        },
+    }
+    )
+
+    if (response.status == 200) {
+        alert("댓글삭제 완료!")
+        response_json = await response.json()
+        return response_json
+    } else {
+        alert(response.status)
+    }
+}
+
+// 댓글 수정하기
+async function putComment(postingId, commentId) {
+
+
+    const response = await fetch(`${backend_base_url}/postings/${postingId}/comment/`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': "application/json",      //"application/json; charset=utf-8"
+            'Authorization': `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+            "comment": commentId,
         })
     }
     )
@@ -128,59 +168,6 @@ async function postComment(postingId, newComment) {
         alert(response.status)
     }
 }
-
-
-
-// 미완성부분
-// 댓글 삭제,수정하기-토글 에러로 연동 못함
-
-// 댓글 삭제
-// async function deleteComment(postingId, commentId) {
-//     const response = await fetch(`${backend_base_url}/postings/${postingId}/comment/$(commentId)`, {
-//         method: 'DELETE',
-//         // credentials: "include",
-//         headers: {
-//             //"application/json; charset=utf-8"
-//             'Authorization': `Bearer ${token}`,
-//         },
-//     }
-//     )
-
-//     if (response.status == 200) {
-//         response_json = await response.json()
-//         return response_json
-//     } else {
-//         alert(response.status)
-//     }
-// }
-
-// 댓글 수정하기
-// async function putComment(postingId, newComment) {
-
-
-//     const response = await fetch(`${backend_base_url}/postings/${postingId}/comment/`, {
-//         // mode: 'no-cors',
-//         method: 'POST',
-//         // credentials: "include",
-//         headers: {
-//             'Content-Type': "application/json",      //"application/json; charset=utf-8"
-//             'Authorization': `Bearer ${token}`,
-//         },
-//         body: JSON.stringify({
-//             "comment": newComment,
-//         })
-//     }
-//     )
-//     console.log(response)
-//     console.log(typeof response)
-
-//     if (response.status == 200) {
-//         response_json = await response.json()
-//         return response_json
-//     } else {
-//         alert(response.status)
-//     }
-// }
 
 // follow
 // async function postfollow(userId) {

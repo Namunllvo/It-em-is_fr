@@ -24,6 +24,17 @@
         text-align: center;
     }
     
+    .postbtn_myo{
+        float: left;
+        height: 40px;
+        width: 40px;
+        margin: 25px 0 0 20px ;
+        background-image: url('/static/img/post.png');
+        background-size: cover;
+        border: none;
+        background-color: white;
+        cursor: pointer;
+    }
     
     .logo_myo{
         display: inline-block;
@@ -52,12 +63,12 @@
         height: 100px;
         justify-items: center;
         float: right;
+        margin-right: 30px;
     }
     
     .user-box_myo>div{
         display: inline-block;
-        text-align: left;
-        float: right;
+        text-align: center;
         margin-right: 10px;
     }
     

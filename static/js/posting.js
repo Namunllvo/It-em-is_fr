@@ -49,8 +49,10 @@ let token = localStorage.getItem("access")
 
     formData.append( "title", title );
     formData.append( "content", content );
+    // 이미지가 있을 때만 데이터를 보냄
+    if (image){
     formData.append( "image", image );
-
+    }
     const response = await fetch(`${backend_base_url}/postings/`, {
           method: 'POST',
           headers: {
@@ -65,7 +67,7 @@ let token = localStorage.getItem("access")
         alert("게시글이 생성되었습니다!")
         window.location.replace(`${frontend_base_url}/static/index.html`)
     }else{
-      alert(response.status)
+      alert(`${response.status}\n제목과 내용을 모두 채워주세요!`)
     }
 }
 
