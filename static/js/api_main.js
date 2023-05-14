@@ -1,15 +1,6 @@
 const frontend_base_url = "http://127.0.0.1:5500"
 const backend_base_url = "http://127.0.0.1:8000"
 
-/* 헤더 푸터 가져오기 */
-fetch("./header-footer.html")
-  .then((response) => {
-    return response.text();
-  })
-  .then((data) => {
-    document.querySelector("header").innerHTML = data;
-  });
-
 // 게시글 리스트 보여주는 함수
 async function getpostings(){
   const response = await fetch(`${backend_base_url}/postings/`)
