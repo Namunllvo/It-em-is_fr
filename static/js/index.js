@@ -1,8 +1,8 @@
-console.log("main_posting_list.js 메인 게시글 리스트 js 로드")
+console.log("메인 게시글 모든 posting리스트")
 console.log(location.origin)
 
 
-
+// 상세게시글로 이동
 function postingDetail(posting_id) {
   console.log(posting_id)
   window.location.href = `${frontend_base_url}/static/posting_detail.html?posting_id=${posting_id}`
@@ -14,6 +14,7 @@ window.onload = async function loadPostings() {
   console.log(postings)
 
   const posting_list = document.getElementById("posting-list")
+  posting_list.innerHTML = ""
 
   postings.forEach(posting => {
     const newCol = document.createElement("div");
@@ -28,18 +29,25 @@ window.onload = async function loadPostings() {
 
     newCol.appendChild(newCard)
 
+    const newimgCard = document.createElement("div");
+    newimgCard.setAttribute("class", "imgdiv")
+    // newimgCard.setAttribute("id", posting.id)
+
+    newCard.appendChild(newimgCard)
+
     const postingImage = document.createElement("img")
     postingImage.setAttribute("class", "card-img-top")
+    postingImage.setAttribute("style", "width:100%; heigh:100%; object-fit: cover;")
 
     if (posting.image) {
       postingImage.setAttribute("src", `${backend_base_url}${posting.image}`)
-      // postingImage.setAttribute("src", "https://cdn.pixabay.com/photo/2017/01/26/18/09/length-landscape-2011238__480.jpg")
+
     } else {
       postingImage.setAttribute("src", "https://cdn.pixabay.com/photo/2017/01/26/18/09/length-landscape-2011238__480.jpg")
     }
 
 
-    newCard.appendChild(postingImage)
+    newimgCard.appendChild(postingImage)
 
     const newCardBody = document.createElement("div")
     newCardBody.setAttribute("class", "card-body")
@@ -73,20 +81,19 @@ window.onload = async function loadPostings() {
   });
 }
 
+// posting_list
 // 최신순
-async function news(loadPostings) {
-  // 모든 게시글 불러오기 - api.js 
+async function news() {
   postings = await getPostings()
-  console.log("posting")
-  console.log(postings)
-
-  const reverseposting = postings.reverse()
-  console.log("reverseposting")
-  console.log(reverseposting)
+  console.log("0-max 까지 순차적으로")
+  const reverpostings = postings.reverse()
+  console.log("역순")
+  console.log(reverpostings)
 
   const posting_list = document.getElementById("posting-list")
+  posting_list.innerHTML = ""
 
-  reverseposting.forEach(posting => {
+  postings.forEach(posting => {
     const newCol = document.createElement("div");
     newCol.setAttribute("class", "col")
     // 상세 게시물로 이동
@@ -99,18 +106,25 @@ async function news(loadPostings) {
 
     newCol.appendChild(newCard)
 
+    const newimgCard = document.createElement("div");
+    newimgCard.setAttribute("class", "imgdiv")
+    // newimgCard.setAttribute("id", posting.id)
+
+    newCard.appendChild(newimgCard)
+
     const postingImage = document.createElement("img")
     postingImage.setAttribute("class", "card-img-top")
+    postingImage.setAttribute("style", "width:100%; heigh:100%; object-fit: cover;")
 
     if (posting.image) {
       postingImage.setAttribute("src", `${backend_base_url}${posting.image}`)
-      // postingImage.setAttribute("src", "https://cdn.pixabay.com/photo/2017/01/26/18/09/length-landscape-2011238__480.jpg")
+
     } else {
       postingImage.setAttribute("src", "https://cdn.pixabay.com/photo/2017/01/26/18/09/length-landscape-2011238__480.jpg")
     }
 
 
-    newCard.appendChild(postingImage)
+    newimgCard.appendChild(postingImage)
 
     const newCardBody = document.createElement("div")
     newCardBody.setAttribute("class", "card-body")
@@ -136,22 +150,175 @@ async function news(loadPostings) {
     newCardCommentCount.innerText = posting.comments_count
     newCardBody.appendChild(newCardCommentCount)
 
-    // 이전에 있던 posting_list 삭제
-    posting_list.removeChild(newCol)
 
 
-    // 삭제후 정렬한 posting_list 삽입
-    // posting_list.appendChild(newCol)
+    posting_list.appendChild(newCol)
 
 
   });
 
+};
 
-  // posting_list
+// 핫이슈
+async function hotissue() {
+  postings = await getPostings()
+  console.log("핫이슈")
+  console.log(postings)
+  var s = postings.sort(function (a, b) {
+    return b.comments_count - a.comments_count;
+  });
+  console.log(s)
+  postings.s
 
-}
+  const posting_list = document.getElementById("posting-list")
+  posting_list.innerHTML = ""
 
-// 페이지 네이션
+  postings.forEach(posting => {
+    const newCol = document.createElement("div");
+    newCol.setAttribute("class", "col")
+    // 상세 게시물로 이동
+    newCol.setAttribute("onclick", `postingDetail(${posting.id})`)
+
+    const newCard = document.createElement("div");
+    newCard.setAttribute("class", "card")
+    newCard.setAttribute("id", posting.id)
+    // console.log(newCard)
+
+    newCol.appendChild(newCard)
+
+    const newimgCard = document.createElement("div");
+    newimgCard.setAttribute("class", "imgdiv")
+    // newimgCard.setAttribute("id", posting.id)
+
+    newCard.appendChild(newimgCard)
+
+    const postingImage = document.createElement("img")
+    postingImage.setAttribute("class", "card-img-top")
+    postingImage.setAttribute("style", "width:100%; heigh:100%; object-fit: cover;")
+
+    if (posting.image) {
+      postingImage.setAttribute("src", `${backend_base_url}${posting.image}`)
+
+    } else {
+      postingImage.setAttribute("src", "https://cdn.pixabay.com/photo/2017/01/26/18/09/length-landscape-2011238__480.jpg")
+    }
+
+
+    newimgCard.appendChild(postingImage)
+
+    const newCardBody = document.createElement("div")
+    newCardBody.setAttribute("class", "card-body")
+    newCard.appendChild(newCardBody)
+
+    const newCardTitle = document.createElement("h5")
+    newCardTitle.setAttribute("class", "card-title")
+    newCardTitle.innerText = posting.title
+    newCardBody.appendChild(newCardTitle)
+
+    const newCardContent = document.createElement("h6")
+    newCardContent.setAttribute("class", "card-text")
+    newCardContent.innerText = posting.content
+    newCardBody.appendChild(newCardContent)
+
+    const newCardLikeCount = document.createElement("h6")
+    newCardLikeCount.setAttribute("class", "card-text")
+    newCardLikeCount.innerText = posting.likes_count
+    newCardBody.appendChild(newCardLikeCount)
+
+    const newCardCommentCount = document.createElement("h6")
+    newCardCommentCount.setAttribute("class", "card-text")
+    newCardCommentCount.innerText = posting.comments_count
+    newCardBody.appendChild(newCardCommentCount)
+
+
+
+    posting_list.appendChild(newCol)
+
+
+  });
+
+};
+
+// 베스트
+async function best() {
+  postings = await getPostings()
+  console.log("베스트")
+  var s = postings.sort(function (a, b) {
+    return b.likes_count - a.likes_count;
+  });
+  console.log(s)
+  postings.s
+
+  const posting_list = document.getElementById("posting-list")
+  posting_list.innerHTML = ""
+
+  postings.forEach(posting => {
+    const newCol = document.createElement("div");
+    newCol.setAttribute("class", "col")
+    // 상세 게시물로 이동
+    newCol.setAttribute("onclick", `postingDetail(${posting.id})`)
+
+    const newCard = document.createElement("div");
+    newCard.setAttribute("class", "card")
+    newCard.setAttribute("id", posting.id)
+    // console.log(newCard)
+
+    newCol.appendChild(newCard)
+
+    const newimgCard = document.createElement("div");
+    newimgCard.setAttribute("class", "imgdiv")
+    // newimgCard.setAttribute("id", posting.id)
+
+    newCard.appendChild(newimgCard)
+
+    const postingImage = document.createElement("img")
+    postingImage.setAttribute("class", "card-img-top")
+    postingImage.setAttribute("style", "width:100%; heigh:100%; object-fit: cover;")
+
+    if (posting.image) {
+      postingImage.setAttribute("src", `${backend_base_url}${posting.image}`)
+
+    } else {
+      postingImage.setAttribute("src", "https://cdn.pixabay.com/photo/2017/01/26/18/09/length-landscape-2011238__480.jpg")
+    }
+
+
+    newimgCard.appendChild(postingImage)
+
+    const newCardBody = document.createElement("div")
+    newCardBody.setAttribute("class", "card-body")
+    newCard.appendChild(newCardBody)
+
+    const newCardTitle = document.createElement("h5")
+    newCardTitle.setAttribute("class", "card-title")
+    newCardTitle.innerText = posting.title
+    newCardBody.appendChild(newCardTitle)
+
+    const newCardContent = document.createElement("h6")
+    newCardContent.setAttribute("class", "card-text")
+    newCardContent.innerText = posting.content
+    newCardBody.appendChild(newCardContent)
+
+    const newCardLikeCount = document.createElement("h6")
+    newCardLikeCount.setAttribute("class", "card-text")
+    newCardLikeCount.innerText = posting.likes_count
+    newCardBody.appendChild(newCardLikeCount)
+
+    const newCardCommentCount = document.createElement("h6")
+    newCardCommentCount.setAttribute("class", "card-text")
+    newCardCommentCount.innerText = posting.comments_count
+    newCardBody.appendChild(newCardCommentCount)
+
+
+
+    posting_list.appendChild(newCol)
+
+
+  });
+
+};
+
+// 페이지 네이션 -미완성
 renderPagination: function pagination(currentPage) {
   // 현재 게시물의 전체 개수가 20개 이하면 pagination을 숨깁니다.
   if (_totalCount <= 8) return;

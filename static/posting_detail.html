@@ -27,10 +27,11 @@
 <header></header>
 
 <body>
+    <!-- 미완성-팔로우, 좋아요, 댓글 수정, 삭제 -->
     <div id="wrap">
         <!-- 댓글 -->
         <div id="aside-left">
-            <!-- 댓글리스트 postings_id/comments_set.all() start -->
+            <!-- 댓글리스트 - 댓글 get,post(기능 완성),  댓글 put,delete(기능미완성) start -->
             <div style="overflow:auto; height: 80%;">
                 <h3>댓글</h3>
                 <div class="col" id="comment-list">
@@ -39,7 +40,9 @@
                     </div>
                 </div>
             </div>
-            <!-- 댓글리스트 postings_id/comments_set.all() end -->
+            <!-- 댓글리스트  end -->
+
+            <!-- 댓글작성 폼 -->
             <div style="margin-top: 10px; height: 20%; justify-content: center;">
 
                 <div class="col_">
@@ -50,52 +53,58 @@
                 <div class="col_">
                     <button type="button" class="btn btn-primary btn-sm" onclick="submitComment()">제출</button>
                 </div>
-                <!--type이 submit이면 get방식의 form태그로 받아져서 쿼리문(?email=&password=)으로 돌아감 -->
 
             </div>
+            <!-- 댓글작성 폼 -->
         </div>
         <!-- 댓글 -->
 
         <!-- 게시글 -->
         <div id="section">
-            <div id="article" style="height: 10%;">
+            <div id="article">
                 <div id="posting-title"></div>
                 <div id="posting-user"></div>
             </div>
             <div id="article" style="height: 300px;">
                 <div id="posting-image"
-                    style="width: 50%; height: 100%; padding:10px; float: left; display: flex; justify-content: center; background-color: green;">
+                    style="width: 50%; height: 100%; padding:10px; float: left; display: flex; justify-content: center; background-color: grey;">
 
                     <!-- <img src="https://t1.daumcdn.net/cfile/tistory/24283C3858F778CA2E" alt="My Image"> -->
                 </div>
                 <div id="posting-content"
-                    style="width: 50%; height: 100%; padding:10px; float: right; background-color:chartreuse">
+                    style="width: 50%; height: 100%; padding:10px; float: right; display: flex; justify-content: center; background-color:rgb(185, 186, 184)">
                     <!-- <span>게시글 내용</span> -->
                 </div>
             </div>
             <div id="article" style="height: 50px;">
-                <div style="float: right; margin-top: 5px;">
+                <!-- 게시글 수정, 삭제 -->
+                <div style="float: right; margin-top: 5px; margin-right: 10px;">
                     <button type="put" class="btn btn-info btn-sm"
                         onclick="location.href='/static/posting.html';">수정</button></a>
-                    <button type="delete" class="btn btn-danger btn-sm" onclick="포스팅삭제.html">삭제</button>
+                    <button type="delete" class="btn btn-danger btn-sm" onclick="deletePosting()">삭제</button>
                 </div>
-            </div>
-            <div id="article" style="height: 100px; ">
-                <div style="float: right; margin-right: 70px;">
-                    <a href="0000" onclick="좋아요버튼"></a><i class="fa-solid fa-thumbs-up"></i>
-                    <span id="like-count"></span>
+                <!-- 게시글 수정, 삭제 -->
+
+                <!-- 좋아요 기능 미완성 -->
+                <div id="article" style="height: 100px; ">
+                    <div style="float: right; margin-top: 5px; margin-right: 70px;">
+
+                        <a href="javascript:void(0);" onclick="like()"><i class="fa-solid fa-thumbs-up"></i></a>
+                        <span id="like-count"></span>
+                    </div>
                 </div>
+                <!-- 좋아요 -->
             </div>
         </div>
         <!-- 게시글 -->
 
-
+        <!-- 팔로우 기능 미완성 -->
         <div id="aside-right">
             <h1>팔로우</h1>
             <div class="row" style="height: 300px;">
                 <div>
                     <!-- if 팔로우하기-->
-                    <a href="000" onclick="팔로우"></a><i class="fa-solid fa-user"></i>
+                    <a href="javascript:void(0);" onclick="follow()"><i class="fa-solid fa-user"></i></a>
                     <span>
                         <div id="follow-user"></div>
                     </span>

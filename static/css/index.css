@@ -59,8 +59,20 @@
     /* background-color: aqua; */
 }
 
-#footer {
-    /* background-color: gray; */
+.imgdiv {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.card {
+    width: 150px;
+}
+
+.card-img-top{
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
 }
 
 .card-img-top{
