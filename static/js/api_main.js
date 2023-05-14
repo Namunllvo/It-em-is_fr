@@ -44,3 +44,13 @@ async function getTop5LikedPostings() {
   const data = await response.json();
   return data;
 }
+
+// 로그인 인증
+async function getPost(postingId, token) {
+  const response = await fetch(`${backend_base_url}/postings/${postingId}/`, {
+      method: 'GET',
+      headers: {
+          'Authorization': `Bearer ${token}`,
+      },
+  });
+}
