@@ -51,6 +51,7 @@ async function handleSignup() {
     const password = document.getElementById("password").value
     const password2 = document.getElementById("password2").value
     // const image = document.getElementById("image").files[0]
+    console.log("email", nickname, password)
 
 
 

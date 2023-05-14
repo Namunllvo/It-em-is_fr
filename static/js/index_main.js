@@ -12,8 +12,11 @@ console.log("js 연결")
 
 // 로그인한 사용자의 토큰을 저장하고 있는지 확인
 const token = localStorage.getItem("access");
+const payload = localStorage.getItem("payload");
 console.log("a",token)
-
+console.log(payload)
+const payload_parse = JSON.parse(payload)
+console.log(payload_parse.user_id);
 window.onload = async function loadPostingView() {
   try {
     const post_list = document.getElementById("article-list");
@@ -27,16 +30,16 @@ window.onload = async function loadPostingView() {
       newCol.addEventListener("click", async () => {
         try {
           const postData = await getPost(post.id, token);
-          // const token = localStorage.getItem("access"); // 토큰 값 가져오기
-          if (!postData) {
+          
+          if (!token) {
             throw new Error("Unauthorized");
           }
            // 토큰 값 전달하여 게시글 상세 정보 가져오기
           
-
-          window.location.href = `${backend_base_url}/postings/${post.id}`;
+          window.location.href = `${frontend_base_url}/static/posting_detail.html?posting_id=${post.id}`
+          
         } catch (error) {
-          window.location.href = "/static/login.html";
+          // window.location.href = "/static/login.html";
         }
       });
 
@@ -70,6 +73,10 @@ window.onload = async function loadPostingView() {
   const hot_list = document.getElementById('hotissue-list');
 
   getTop5Postings().then(postings => {
+    var s = postings.sort(function (a, b) {
+      return b.comments_count - a.comments_count;
+      });
+      console.log(s)
     postings.slice(0,5).forEach(post => {
       const newCol = document.createElement("div");
       newCol.setAttribute("class", "col");
@@ -80,7 +87,7 @@ window.onload = async function loadPostingView() {
             throw new Error("Unauthorized");
           }
     
-          window.location.href = `${backend_base_url}/postings/${post.id}`;
+          window.location.href = `${frontend_base_url}/static/posting_detail.html?posting_id=${post.id}`;
         } catch (error) {
           window.location.href = "/static/login.html";
         }
@@ -181,6 +188,10 @@ window.onload = async function loadPostingView() {
   const best_list = document.getElementById('best-list');
 
   getTop5LikedPostings().then(postings => {
+    var s = postings.sort(function (a, b) {
+      return b.likes_count - a.likes_count;
+      });
+      console.log(s)
     postings.slice(0,5).forEach(post => {
       const newCol = document.createElement("div");
       newCol.setAttribute("class", "col");
@@ -190,7 +201,7 @@ window.onload = async function loadPostingView() {
           if (!token) {
             throw new Error("Unauthorized");
           }
-          window.location.href = `${backend_base_url}/postings/${post.id}`;
+          window.location.href = `${frontend_base_url}/static/posting_detail.html?posting_id=${post.id}`;
         } catch (error) {
           window.location.href = "/static/login.html";
         }
