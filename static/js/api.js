@@ -43,7 +43,7 @@ async function deletePost(postingId) {
     // 글 작성한 유저가 아니면 alert 삭제할 권한이 없습니다 
     const dlt = confirm("글을 삭제하시겠습니까?")
     // 확인버튼
-    if (dlt == true) {
+    if (dlt) {
         // 삭제
         const response = await fetch(`${backend_base_url}/postings/${postingId}/`, {
             method: 'DELETE',
@@ -98,8 +98,6 @@ async function getComments(postingId) {
 
 // 댓글 작성하기
 async function postComment(postingId, newComment) {
-
-
     const response = await fetch(`${backend_base_url}/postings/${postingId}/comment/`, {
         method: 'POST',
         headers: {
@@ -113,10 +111,9 @@ async function postComment(postingId, newComment) {
     )
 
     if (response.status == 200) {
-        response_json = await response.json()
-        return response_json
+        alert("댓글 작성완료!")
     } else {
-        alert(response.status)
+        alert("댓글을 작성해주세요!")
     }
 }
 
@@ -125,45 +122,40 @@ async function postComment(postingId, newComment) {
 // 미완성부분
 
 // 댓글 삭제
-async function deleteComment(postingId, commentId) {
-    const response = await fetch(`${backend_base_url}/postings/${postingId}/comment/$(commentId)`, {
+async function deleteComment(commentId) {
+    const response = await fetch(`${backend_base_url}/postings/comment/${commentId}/`, {
         method: 'DELETE',
         headers: {
-            'Authorization': `Bearer ${token}`,
+            "Authorization": `Bearer ${token}`,
         },
     }
     )
-
-    if (response.status == 200) {
+    if (response.status == 204) {
         alert("댓글삭제 완료!")
-        response_json = await response.json()
-        return response_json
+        loadComments(postingId)
     } else {
         alert(response.status)
     }
 }
 
 // 댓글 수정하기
-async function putComment(postingId, commentId) {
-
-
-    const response = await fetch(`${backend_base_url}/postings/${postingId}/comment/`, {
+async function putComment(commentId,newComment) {
+    console.log('newComment',newComment)
+    const response = await fetch(`${backend_base_url}/postings/comment/${commentId}/`, {
         method: 'PUT',
         headers: {
             'Content-Type': "application/json",      //"application/json; charset=utf-8"
             'Authorization': `Bearer ${token}`,
         },
         body: JSON.stringify({
-            "comment": commentId,
+            "comment": newComment,
         })
     }
     )
-    console.log(response)
-    console.log(typeof response)
 
     if (response.status == 200) {
-        response_json = await response.json()
-        return response_json
+        alert("댓글 수정 완료!")
+        loadComments(postingId);
     } else {
         alert(response.status)
     }

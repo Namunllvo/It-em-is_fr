@@ -39,9 +39,15 @@ async function handleSignup() {
     const password = document.getElementById("password").value
     const password2 = document.getElementById("password2").value
     // const image = document.getElementById("image").files[0]
-    console.log("email", nickname, password)
 
-
+    if (password2 !== password) {
+        alert("비밀번호가 달라요!")
+        window.location.reload()
+    }else if (!email || !nickname || !password || !password2){
+        alert("공백이 있잖아요!!!")
+        window.location.reload()
+        return pass
+    }
 
     const response = await fetch("http://127.0.0.1:8000/users/signup/", {
         headers: {
@@ -61,6 +67,9 @@ async function handleSignup() {
     if (response.status == 201) {
         alert("회원가입을 축하합니다!")
         window.location.replace('http://127.0.0.1:5500/static/login.html')
+    }else if(response.status == 400){
+        alert("이미가입되어있는 이메일과 닉네임입니다!")
+        window.location.reload()
     }
 
     return response
