@@ -1,15 +1,10 @@
-
-
-
 console.log("js 연결")
 
 // 로그인한 사용자의 토큰을 저장하고 있는지 확인
 const token = localStorage.getItem("access");
 const payload = localStorage.getItem("payload");
-console.log("a",token)
-console.log(payload)
 const payload_parse = JSON.parse(payload)
-console.log(payload_parse.user_id);
+
 window.onload = async function loadPostingView() {
   try {
     const post_list = document.getElementById("article-list");

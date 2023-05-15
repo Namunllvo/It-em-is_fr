@@ -2,10 +2,22 @@ console.log("메인 게시글 모든 posting리스트")
 console.log(location.origin)
 
 
+// 현재 로그인 유저
+const payload = localStorage.getItem("payload");
+
+
+
 // 상세게시글로 이동
 function postingDetail(posting_id) {
-  console.log(posting_id)
-  window.location.href = `${frontend_base_url}/static/posting_detail.html?posting_id=${posting_id}`
+  // 로그인했다면
+  if (payload){
+    // 상세게시글로
+    window.location.href = `${frontend_base_url}/static/posting_detail.html?posting_id=${posting_id}`
+  }else{
+    // 피드페이지에 머물기
+    alert("회원만 열람이 가능합니다. 로그인 해주세요!")
+    window.location.href = `${frontend_base_url}/static/login.html`
+  }
 }
 
 window.onload = async function loadPostings() {
@@ -60,7 +72,7 @@ window.onload = async function loadPostings() {
 
     const newCardContent = document.createElement("h6")
     newCardContent.setAttribute("class", "card-text")
-    newCardContent.innerText = posting.content
+    newCardContent.innerText = truncateString(posting.content, 20); //보이기 20자 제한
     newCardBody.appendChild(newCardContent)
 
     const newCardCount = document.createElement("h6")

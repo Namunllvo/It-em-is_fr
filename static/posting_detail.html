@@ -45,7 +45,7 @@
             <div style="margin-top: 10px; height: 20%; justify-content: center;">
                 <div class="col_">
                     <div class="card new-comment-box_myo">
-                        <textarea type="text" class="new-comment_myo" id="new-comment" placeholder="댓글을작성해주세요"></textarea>
+                        <textarea type="text" class="new-comment_myo" id="new-comment" rows="3" maxlength="100" placeholder="댓글을 작성해주세요."></textarea>
                         <button style="float: right;" type="button" class="btn btn-primary btn-sm" onclick="submitComment()">제출</button>
                     </div>
                 </div>
@@ -62,10 +62,7 @@
                 <div id="posting-user"></div>
             </div>
             <div id="article" style="height: 300px;">
-                <div id="posting-image"
-                    style="width: 50%; height: 100%; padding:10px; float: left; display: flex; justify-content: center; background-color: grey;">
-
-                    <!-- <img src="https://t1.daumcdn.net/cfile/tistory/24283C3858F778CA2E" alt="My Image"> -->
+                <div id="posting-image">
                 </div>
                 <div id="posting-content"
                     class="posting-content_myo">
@@ -108,9 +105,9 @@
                     </span>
                 </div>
             </div>
-            <div style="height: 300px; background-color: black;"></div>
-        </div>
     </div>
+            <div style="height: 300px;"></div>
+        </div>
 
 </body>
 

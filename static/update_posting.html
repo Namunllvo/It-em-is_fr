@@ -16,7 +16,9 @@
 <body>
     <div class="container-newpost">
         <div class="new_update_img">
-            <img src="/static/img/이건사야해.jpg">
+            <img src="/static/img/default.png">
+            <div id="image_container"></div>
+
         </div>
         <form class="post-form">
             <div class="new_post_form-group">
@@ -25,7 +27,6 @@
                     placeholder="제목을 입력해주세요!">
             </div>
             <div class="new_post_form-group">
-                <div id="image_container"></div>
                 <label for="post_img">사진</label>
                 <input type="file" class="form-control-file file-btn" id="post_img" name="post_img"
                     onchange="setThumbnail(event);">

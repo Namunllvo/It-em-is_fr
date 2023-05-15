@@ -23,3 +23,10 @@
 .page_myo{
     background-color: green;
 }
+
+.sorry{
+    max-width: 70vw;
+    position:absolute;
+    top: 10vw;
+    left: 25vw;
+}
