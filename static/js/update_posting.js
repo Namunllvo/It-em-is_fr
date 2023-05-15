@@ -98,12 +98,23 @@ function setThumbnail(event) {
   var reader = new FileReader();
 
   reader.onload = function (event) {
+    // 화살표 추가
+    let icon = document.createElement("text");
+    icon.innerText = '▼   ▼   ▼   ▼   ▼';
+    icon.style.font = "50px solid";
+    icon.style.margin = "0 50px 0 50px";
+    icon.style.textAlign = "center";
+    icon.style.color = "red";
+
     var img = document.createElement("img");
     img.setAttribute("src", event.target.result);
 
     // 썸네일 크기 조절
-    img.style.width = "200px"; // 너비 200px로 설정
+    img.style.width = "350px"; // 너비 200px로 설정
     img.style.height = "auto"; // 높이 자동 설정
+    img.style.border = "3px dashed red";
+    img.style.margin = "0 50px 0 50px";
+    document.querySelector("div#image_container").appendChild(icon);
     document.querySelector("div#image_container").appendChild(img);
   };
 

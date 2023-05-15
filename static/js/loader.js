@@ -27,6 +27,9 @@ async function injectHeader() {
     // payload가 존재 = 로그인되어있다면
     if (payload) {
         const payload_parse = JSON.parse(payload)
+        
+        const postbtn_myo = document.getElementById("postbtn_myo")
+        postbtn_myo.innerHTML = `<div type="button" class="postbtn_myo" onclick="location.href='/static/posting.html';"></div>`
 
         const intro = document.getElementById("intro")
         intro.innerHTML =`${payload_parse.nickname}님 오셨군요!`
